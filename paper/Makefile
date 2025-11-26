@@ -19,11 +19,11 @@ hcw-opt: hcw.cpp ../libfsst.a
 	g++ -std=c++14 -W -Wall -ohcw-opt $(OPT) -g hcw.cpp -I.. -L.. -lfsst
 
 filtertest: filtertest.cpp ../libfsst.a
-	g++ -std=c++14 -W -Wall -ofiltertest -g $(OPT) filtertest.cpp -llz4 -I.. -L.. -lfsst 
+	g++ -std=c++14 -W -Wall -ofiltertest -g $(OPT) filtertest.cpp -I/opt/homebrew/include -L/opt/homebrew/lib -llz4 -I.. -L.. -lfsst 
 
 linetest: linetest.cpp ../libfsst.a
 	#g++ -std=c++14 -W -Wall -olinetest -Izstd -Lzstd -g $(OPT) linetest.cpp -llz4 -l:libzstd.so.1 -I.. -L.. -lfsst
-	g++ -std=c++14 -W -Wall -olinetest -Izstd -Lzstd -g $(OPT) linetest.cpp -llz4 -lzstd -I.. -L.. -lfsst
+	g++ -std=c++14 -W -Wall -olinetest -Izstd -I/opt/homebrew/include -L/opt/homebrew/lib -Lzstd -g $(OPT) linetest.cpp -llz4 -lzstd -I.. -L.. -lfsst
 
 experiments: results/perline.csv results/fullblock.csv results/evolution.csv results/filter.csv results/line.csv results/FSST-vs-LZ4.csv results/kernels.tex results/lz4-smallblocks.csv results/sorted.csv
 

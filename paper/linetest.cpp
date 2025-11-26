@@ -54,7 +54,8 @@ class FSSTCompressionRunner : public CompressionRunner {
       offsets.clear();
 
       vector<unsigned long> rowLens, compressedRowLens;
-      vector<unsigned char*> rowPtrs, compressedRowPtrs;
+      vector<const unsigned char*> rowPtrs;
+      vector<unsigned char*> compressedRowPtrs;
       rowLens.reserve(data.size());
       compressedRowLens.resize(data.size());
       rowPtrs.reserve(data.size());
@@ -266,7 +267,7 @@ static tuple<bool, double, double, double> doTest(CompressionRunner& runner, con
             line.append("\n");
             corpusLen += line.length();
             if (line.length() > maxLineLen) maxLineLen = line.length();
-            corpus.push_back(move(line));
+            corpus.push_back(std::move(line));
             if (corpusLen > targetLen) break;
          }
          if (corpus.empty()) 
@@ -352,7 +353,7 @@ int main(int argc, char* argv[]) {
          auto iter = find(files.begin(), files.end(), argv[++index]);
          if (iter != files.end()) files.erase(iter);
       } else {
-         files.push_back(move(f));
+         files.push_back(std::move(f));
       }
    }
 

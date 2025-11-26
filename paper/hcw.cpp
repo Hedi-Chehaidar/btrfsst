@@ -15,7 +15,7 @@ int main(int argc,char* argv[]) {
    struct stat stat_buf;
    (void) fstat(fd, &stat_buf);
    unsigned long inSize = stat_buf.st_size;
-   vector<u8> cur(inSize + lineSize);
+   vector<libfsst::u8> cur(inSize + lineSize);
    if (read(fd, cur.data(), inSize) < 0) exit(-1);
 
    // figure out the other parameters
@@ -32,9 +32,12 @@ int main(int argc,char* argv[]) {
    }
    if (argc >= 5) sampleChunk = atoi(argv[4]);
 
-   vector<u8*> strIn, strOut;
-   vector<unsigned long> lenIn, lenOut;
-   vector<u8> out(8192+sampleChunk*2);
+   vector<const libfsst::u8*> strIn;
+   vector<libfsst::u8*> strOut;
+   vector<const unsigned long> lenIn;
+   vector<unsigned long> lenOut;
+   vector<libfsst::u8> out(8192+sampleChunk*2);
+   unsigned long m = 0;
 
    for(unsigned long chunkPos=0; chunkPos<inSize; chunkPos+=sampleChunk) {
       unsigned long n, lineEnd, linePos = chunkPos, chunkEnd = min(inSize, chunkPos+sampleChunk);
@@ -57,23 +60,23 @@ int main(int argc,char* argv[]) {
          uncompressed += len;
          linePos = lineEnd;
       }
-      Encoder *e;
+      libfsst::Encoder *e;
       {
          PerfEventBlock a(8*1024*1024);
-         e = (Encoder*) fsst_create(n, lenIn.data(), strIn.data(), zeroTerminated);
+         e = (libfsst::Encoder*) fsst_create(n, lenIn.data(), strIn.data(), zeroTerminated);
       }
       {
          PerfEventBlock a(chunkEnd - chunkPos);
-         unsigned long m = opt?compressImpl(e, n, lenIn.data(), strIn.data(), out.size(), out.data(), lenOut.data(), strOut.data(), noSuffixOpt, avoidBranch,0):
+         m = opt?compressImpl(e, n, lenIn.data(), strIn.data(), out.size(), out.data(), lenOut.data(), strOut.data(), noSuffixOpt, avoidBranch,0):
                    (simd >= 0)?compressAuto(e, n, lenIn.data(), strIn.data(), out.size(), out.data(), lenOut.data(), strOut.data(), simd):
                    fsst_compress((fsst_encoder_t*) e, n, lenIn.data(), strIn.data(), out.size(), out.data(), lenOut.data(), strOut.data());
          assert(m == n);
       }
       fsst_decoder_t d = fsst_decoder((fsst_encoder_t*)e);
-      vector<u8> decompressed(lineSize);
+      vector<libfsst::u8> decompressed(lineSize);
       for(unsigned long i=0; i<n; i++) {
          compressed += lenOut[i];
-         unsigned long m = fsst_decompress(&d, lenOut[i], strOut[i], lineSize, decompressed.data());
+         m = fsst_decompress(&d, lenOut[i], strOut[i], lineSize, decompressed.data());
          string s1 = string((char*) decompressed.data(), min(m,lineSize));
          string s2 = string((char*) strIn[i], lenIn[i]);
          assert(m == lenIn[i]);
@@ -84,5 +87,5 @@ int main(int argc,char* argv[]) {
       lenIn.clear(); lenOut.clear();
    }
 cerr << ((double) uncompressed) / compressed << endl;
-   return 0;
+   return 0 & m;
 }

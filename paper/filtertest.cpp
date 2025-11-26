@@ -58,7 +58,7 @@ class NoCompressionRunner : public CompressionRunner {
       return result;
    }
    /// Decompress some selected rows, separated by newlines. The line number are in ascending order. The target buffer is guaranteed to be large enough
-   virtual uint64_t decompressRows(vector<char>& target, const vector<unsigned>& lines) {
+   virtual uint64_t decompressRows(vector<char>& target, const vector<unsigned>& lines) override {
       char* writer = target.data();
       for (auto l : lines) {
          auto& s = data[l];
@@ -91,7 +91,8 @@ class FSSTCompressionRunner : public CompressionRunner {
       offsets.clear();
 
       vector<unsigned long> rowLens, compressedRowLens;
-      vector<unsigned char*> rowPtrs, compressedRowPtrs;
+      vector<const unsigned char*> rowPtrs;
+      vector<unsigned char*> compressedRowPtrs;
       rowLens.reserve(data.size());
       compressedRowLens.resize(data.size());
       rowPtrs.reserve(data.size());
@@ -111,12 +112,12 @@ class FSSTCompressionRunner : public CompressionRunner {
       auto createTime = std::chrono::steady_clock::now();
       vector<unsigned char> compressionBuffer, fullBuffer;
       fullBuffer.resize(totalLen);
-      unsigned char *fullBuf = fullBuffer.data();
       unsigned stringEnd = 0;
       for (auto& d : data) {
-         memcpy(fullBuf + stringEnd, d.data(), d.length());
+         memcpy(fullBuffer.data() + stringEnd, d.data(), d.length());
          stringEnd += d.length();
       }
+      const unsigned char *fullBuf = fullBuffer.data();
       compressionBuffer.resize(16 + 2 * totalLen);
       auto copyTime = std::chrono::steady_clock::now();
       fsst_compress(encoder, 1, &totalLen, &fullBuf, compressionBuffer.size(), compressionBuffer.data(), compressedRowLens.data(), compressedRowPtrs.data());
@@ -155,7 +156,7 @@ class FSSTCompressionRunner : public CompressionRunner {
       return result;
    }
    /// Decompress some selected rows, separated by newlines. The line number are in ascending order. The target buffer is guaranteed to be large enough
-   virtual uint64_t decompressRows(vector<char>& target, const vector<unsigned>& lines) {
+   virtual uint64_t decompressRows(vector<char>& target, const vector<unsigned>& lines) override {
       char* writer = target.data();
       auto limit = writer + target.size();
 
@@ -270,7 +271,7 @@ class LZ4CompressionRunner : public CompressionRunner {
       return result;
    }
    /// Decompress some selected rows, separated by newlines. The line number are in ascending order. The target buffer is guaranteed to be large enough
-   virtual uint64_t decompressRows(vector<char>& target, const vector<unsigned>& lines) {
+   virtual uint64_t decompressRows(vector<char>& target, const vector<unsigned>& lines) override {
       char* writer = target.data();
       vector<char> decompressionBuffer;
       unsigned currentBlock = 0;
@@ -318,7 +319,7 @@ static pair<bool, vector<pair<unsigned, double>>> doTest(CompressionRunner& runn
          string line;
          while (getline(in, line)) {
             corpusLen += line.length() + 1;
-            corpus.push_back(move(line));
+            corpus.push_back(std::move(line));
             if (corpusLen > 7000000) break;
          }
       }
@@ -413,7 +414,7 @@ void cmpCase(unsigned blockSize, const string& file) {
          string line;
          while (getline(in, line)) {
             corpusLen += line.length() + 1;
-            corpus.push_back(move(line));
+            corpus.push_back(std::move(line));
             if (corpusLen > targetLen) break;
          }
          if (corpus.empty()) return;
@@ -471,7 +472,7 @@ int main(int argc, const char* argv[]) {
          auto iter = find(files.begin(), files.end(), argv[++index]);
          if (iter != files.end()) files.erase(iter);
       } else {
-         files.push_back(move(f));
+         files.push_back(std::move(f));
       }
    }
 
