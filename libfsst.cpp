@@ -53,7 +53,7 @@ class hash<libfsst::QSymbol> {
 namespace libfsst {
 bool isEscapeCode(u16 pos) { return pos < FSST_CODE_BASE; }
 
-std::ostream& operator<<(std::ostream& out, const Symbol& s) {
+ostream& operator<<(ostream& out, const Symbol& s) {
    for (u32 i=0; i<s.length(); i++)
       out << s.val.str[i];
    return out;
@@ -241,6 +241,399 @@ SymbolTable *buildSymbolTable(Counters& counters, vector<const u8*> line, const 
    bestTable->finalize(zeroTerminated); // renumber codes for more efficient compression
    return bestTable;
 }
+
+
+// BtrFSST training helpers
+
+static inline u32 pack3(u16 a, u16 b, u16 c) {
+   // each code fits in 9 bits (0..511)
+   return ((u32)a << 18) | ((u32)b << 9) | (u32)c;
+}
+
+struct Count3 {
+   unordered_map<u32, u16> m;
+   void clear() { m.clear(); }
+   void inc(u16 a, u16 b, u16 c) {
+      u32 k = pack3(a,b,c);
+      auto it = m.find(k);
+      if (it == m.end()) m.emplace(k, 1);
+      else if (it->second != 0xFFFF) it->second++;
+   }
+   u16 get(u16 a, u16 b, u16 c) const {
+      auto it = m.find(pack3(a,b,c));
+      return it==m.end()?0:it->second;
+   }
+};
+
+struct Cand {
+   int gain;
+   u16 a, b, c;  // b==0xFFFF => single, c==0xFFFF => pair
+   u16 cnt;      // current count
+   u8  symLen;
+
+   bool operator<(Cand const& o) const { return gain < o.gain; } // max-heap
+};
+
+static inline bool containsTerminatorByte(const libfsst::Symbol& s, u16 terminatorByte) {
+   u32 L = s.length();
+   if (L <= 1) return false;
+   for (u32 i=0;i<L;i++) if ((u8)s.val.str[i] == (u8)terminatorByte) return true;
+   return false;
+}
+
+
+static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
+                                       vector<const u8*> line,
+                                       const size_t len[],
+                                       bool zeroTerminated,
+                                       const fsst_options_t& opt)
+{
+   SymbolTable *st = new SymbolTable(), *bestTable = new SymbolTable();
+   int bestGain = (int) -FSST_SAMPLEMAXSZ;
+   size_t sampleFrac = 128;
+
+   // terminator selection (same as fsst)
+   st->zeroTerminated = zeroTerminated;
+   if (zeroTerminated) {
+      st->terminator = 0;
+   } else {
+      u16 byteHisto[256];
+      memset(byteHisto, 0, sizeof(byteHisto));
+      for(size_t i=0; i<line.size(); i++) {
+         const u8* cur = line[i];
+         const u8* end = cur + len[i];
+         while(cur < end) byteHisto[*cur++]++;
+      }
+      u32 minSize = FSST_SAMPLEMAXSZ, i = st->terminator = 256;
+      while(i-- > 0) {
+         if (byteHisto[i] > minSize) continue;
+         st->terminator = i;
+         minSize = byteHisto[i];
+      }
+   }
+   assert(st->terminator != 256);
+
+   auto rnd128 = [&](size_t i) { return 1 + (FSST_HASH((i+1UL)*sampleFrac)&127); };
+
+   Count3 count3;
+
+   // compress sample, and compute (pair-)frequencies (greedy)
+   auto compressCount = [&](SymbolTable *st, Counters &counters) { // returns gain
+      int gain = 0;
+
+      for(size_t i=0; i<line.size(); i++) {
+         const u8* cur = line[i], *start = cur;
+         const u8* end = cur + len[i];
+
+         if (sampleFrac < 128) {
+            // in earlier rounds (sampleFrac < 128) we skip data in the sample (reduces overall work ~2x)
+            if (rnd128(i) > sampleFrac) continue;
+         }
+         if (cur < end) {
+            u16 code2 = 255, code1 = st->findLongestSymbol(cur, end);
+            cur += st->symbols[code1].length();
+            gain += (int) (st->symbols[code1].length()-(1+isEscapeCode(code1)));
+            while (true) {
+               // count single symbol (i.e. an option is not extending it)
+               counters.count1Inc(code1);
+	
+               // as an alternative, consider just using the next byte..
+               if (st->symbols[code1].length() != 1) // .. but do not count single byte symbols doubly
+                  counters.count1Inc(*start); 
+
+               if (cur==end) { 
+                  break;
+               } 
+
+               // now match a new symbol
+	       start = cur;
+               if (cur<end-7) {
+                  u64 word = fsst_unaligned_load(cur);
+                  size_t code = word & 0xFFFFFF;
+                  size_t idx = FSST_HASH(code)&(st->hashTabSize-1);
+                  Symbol s = st->hashTab[idx];
+                  code2 = st->shortCodes[word & 0xFFFF] & FSST_CODE_MASK;
+                  word &= (0xFFFFFFFFFFFFFFFF >> (u8) s.icl);
+                  if ((s.icl < FSST_ICL_FREE) & (s.load_num() == word)) {
+                     code2 = s.code(); 
+		     cur += s.length();
+                  } else if (code2 >= FSST_CODE_BASE) {
+                     cur += 2;
+                  } else {
+                     code2 = st->byteCodes[word & 0xFF] & FSST_CODE_MASK;
+                     cur += 1;
+                  }
+               } else {
+                  code2 = st->findLongestSymbol(cur, end);
+                  cur += st->symbols[code2].length();
+               }
+ 
+               // compute compressed output size
+               gain += ((int) (cur-start))-(1+isEscapeCode(code2));
+
+               if (sampleFrac < 128) { // no need to count pairs in final round
+	          // consider the symbol that is the concatenation of the two last symbols
+                  counters.count2Inc(code1, code2);
+
+                  // as an alternative, consider just extending with the next byte..
+                  if ((cur-start) > 1)  // ..but do not count single byte extensions doubly
+                     counters.count2Inc(code1, *start);
+               }
+               code1 = code2;
+            }
+         }
+      }
+      return gain; 
+   };
+
+   // DP-based compressCount
+   auto compressCountDP = [&](SymbolTable *st, Counters &counters) -> int {
+      int gain = 0;
+      count3.clear();
+
+      for(size_t i=0; i<line.size(); i++) {
+         const u8* cur = line[i];
+         const size_t n = len[i];
+
+         if (sampleFrac < 128) {
+            if (rnd128(i) > sampleFrac) continue;
+         }
+         if (n == 0) continue;
+
+         // build trie for training layout and DP parse
+         st->buildDP(cur, n, /*finalLayout=*/false);
+
+         // traverse DP choices and fill counters
+         u16 prev1 = 0xFFFF; // previous symbol
+         u16 prev2 = 0xFFFF; // previous-previous symbol
+
+         size_t pos = 0;
+         while (true) {
+            size_t startPos = pos;
+            u16 code = st->dpChoice[pos];
+
+            u32 L = st->symbols[code].length();
+            gain += (int)L - (1 + (code < FSST_CODE_BASE));
+            pos += L;
+
+            // count current symbol occurrence
+            counters.count1Inc(code);
+            if (L != 1) counters.count1Inc(cur[startPos]); // also count first byte alternative
+
+            if (pos >= n) break;
+
+            // next symbol
+            u16 next = st->dpChoice[pos];
+
+            if (sampleFrac < 128) {
+               counters.count2Inc(code, next);
+               // also count extension by next byte if next consumes >1 (avoid double count for 1-byte)
+               if (st->symbols[next].length() != 1)
+                  counters.count2Inc(code, cur[pos]);
+            }
+
+            // triples
+            if (opt.flags & FSST_OPT_TRIPLES) {
+               if (prev2 != 0xFFFF) {
+                  u32 Lprevs = st->symbols[prev2].length() + st->symbols[prev1].length();
+                  if (Lprevs < Symbol::maxLength) {
+                     if (next < FSST_CODE_BASE) {
+                        count3.inc(prev2, prev1, next);
+                     } else {
+                        // analogous "next byte" alternative
+                        count3.inc(prev2, prev1, cur[pos]);
+                     }
+                  }
+               }
+            }
+
+            prev2 = prev1;
+            prev1 = code;
+         }
+      }
+      return gain;
+   };
+
+   // makeTable with heap + triples + pruning
+   auto makeTableEx = [&](SymbolTable *st, Counters &counters) {
+      const u32 C = FSST_CODE_BASE + (u32)st->nSymbols;
+
+      // snapshot symbols from previous table
+      vector<Symbol> prevSym(C);
+      for (u32 i=0;i<C;i++) prevSym[i] = st->symbols[i];
+
+      // extract counters into mutable dense arrays (small: max 512)
+      vector<int> c1(C, 0);
+      vector<vector<int>> c2(C, vector<int>(C, 0));
+
+      for (u32 pos1=0; pos1<C; pos1++) {
+         u32 cnt1 = counters.count1GetNext(pos1);
+         if (!cnt1) continue;
+         c1[pos1] = (int)cnt1;
+
+         if (sampleFrac >= 128) continue;
+
+         for (u32 pos2=0; pos2<C; pos2++) {
+            u32 cnt2 = counters.count2GetNext(pos1, pos2);
+            if (!cnt2) continue;
+            c2[pos1][pos2] = (int)cnt2;
+         }
+      }
+
+      // force terminator inclusion (same idea as original)
+      u16 termCode = st->nSymbols ? (u16)FSST_CODE_BASE : (u16)st->terminator;
+      if (termCode < C) c1[termCode] = 65535;
+
+      priority_queue<Cand> heap;
+
+      auto pushSingle = [&](u16 a) {
+         int cnt = c1[a];
+         if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
+         u8 L = (u8) prevSym[a].length();
+         // heuristic: promoting single-byte symbols (*8) helps reduce exception rates and increases [de]compression speed
+         int gain = (L == 1 ? 8 : 1) * cnt ;
+         heap.push(Cand{gain, a, 0xFFFF, 0xFFFF, (u16)cnt, L});
+      };
+      auto pushPair = [&](u16 a, u16 b) {
+         int cnt = c2[a][b];
+         if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
+         if (prevSym[a].length() == Symbol::maxLength) return;
+         u32 Lsum = prevSym[a].length() + prevSym[b].length();
+         if (Lsum > Symbol::maxLength) Lsum = Symbol::maxLength;
+         heap.push(Cand{(int)Lsum * cnt, a, b, 0xFFFF, (u16)cnt, (u8)Lsum});
+      };
+      auto pushTriple = [&](u16 a, u16 b, u16 c) {
+         u16 cnt = count3.get(a,b,c);
+         if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
+         u32 Lab = prevSym[a].length() + prevSym[b].length();
+         if (Lab >= Symbol::maxLength) return;
+         u32 Lsum = Lab + prevSym[c].length();
+         if (Lsum > Symbol::maxLength) Lsum = Symbol::maxLength;
+         heap.push(Cand{(int)Lsum * (int)cnt, a, b, c, cnt, (u8)Lsum});
+      };
+
+      // seed heap
+      for (u16 a=0; a<C; a++) pushSingle(a);
+      if (sampleFrac < 128) {
+         for (u16 a=0; a<C; a++)
+            for (u16 b=0; b<C; b++)
+               if (c2[a][b]) pushPair(a,b);
+      }
+      if ((opt.flags & FSST_OPT_TRIPLES) && sampleFrac < 128) {
+         for (auto const& kv : count3.m) {
+            u32 k = kv.first;
+            u16 a = (u16)(k >> 18);
+            u16 b = (u16)((k >> 9) & 511);
+            u16 c = (u16)(k & 511);
+            pushTriple(a,b,c);
+         }
+      }
+
+      SymbolTable next;
+
+      // build next table
+      while (next.nSymbols < 255 && !heap.empty()) {
+         Cand cd = heap.top();
+         heap.pop();
+         
+         // recompute current count (lazy fix-up)
+         int curCnt = 0;
+         if (cd.b == 0xFFFF) curCnt = c1[cd.a];
+         else if (cd.c == 0xFFFF) curCnt = c2[cd.a][cd.b];
+         else curCnt = (int) count3.get(cd.a, cd.b, cd.c);
+         
+         if (curCnt <= 0) continue;
+         
+         //check if this candidate is deleted (ie. count is outdated)
+         int curGain = (int)(cd.symLen == 1 ? 8 : cd.symLen) * curCnt;
+         if (curGain != cd.gain) {
+            continue;
+         }
+
+         // materialize symbol
+         Symbol s;
+         if (cd.b == 0xFFFF) {
+            s = prevSym[cd.a];
+         } else if (cd.c == 0xFFFF) {
+            s = concat(prevSym[cd.a], prevSym[cd.b]);
+         } else {
+            // concat(concat(a,b),c)
+            Symbol ab = concat(prevSym[cd.a], prevSym[cd.b]);
+            s = concat(ab, prevSym[cd.c]);
+         }
+
+         // multi-byte symbols cannot contain terminator byte
+         if (containsTerminatorByte(s, st->terminator)) continue;
+
+         // insert (hash collisions possible; skip if so)
+         if (!next.add(s)) continue;
+
+         // pruning: reduce counts for parts used
+         if ((opt.flags & FSST_OPT_PRUNE) && cd.b != 0xFFFF) {
+            int used = curCnt;
+
+            // decrement singles
+            c1[cd.a] = max(0, c1[cd.a] - used);
+            c1[cd.b] = max(0, c1[cd.b] - used);
+            pushSingle(cd.a);
+            
+            pushSingle(cd.b);
+
+            
+            if (cd.c != 0xFFFF) {
+               c1[cd.c] = max(0, c1[cd.c] - used);
+               pushSingle(cd.c);
+               
+               c2[cd.a][cd.b] = max(0, c2[cd.a][cd.b] - used);
+               pushPair(cd.a, cd.b);
+               c2[cd.b][cd.c] = max(0, c2[cd.b][cd.c] - used);
+               pushPair(cd.b, cd.c);
+            }
+         }
+      }
+
+      *st = next;
+
+      // if DP training is enabled, rebuild trie for training layout (so next compressCountDP is fast)
+      st->trieReadyTrain = false;
+      st->trieReadyFinal = false;
+   };
+
+   
+   // outer training loop (same structure as fsst)
+   u8 bestCounters[512*sizeof(u16)];
+
+#ifdef NONOPT_FSST
+   for(size_t frac : {127, 127, 127, 127, 127, 127, 127, 127, 127, 128}) {
+      sampleFrac = frac;
+#else
+   for(sampleFrac=8; true; sampleFrac += 30) {
+#endif
+      memset(&counters, 0, sizeof(Counters));
+
+      long gain;
+      if (opt.flags & FSST_OPT_DP_TRAIN) gain = compressCountDP(st, counters);
+      else gain = compressCount(st, counters);
+
+      if (gain >= bestGain) {
+         counters.backup1(bestCounters);
+         *bestTable = *st; bestGain = (int)gain;
+      }
+
+      if (sampleFrac >= 128) break;
+
+      // Build next table
+      makeTableEx(st, counters);
+   }
+
+   delete st;
+   counters.restore1(bestCounters);
+   makeTableEx(bestTable, counters);
+   bestTable->finalize(zeroTerminated);
+   return bestTable;
+}
+
+
 
 #ifndef NONOPT_FSST
 static inline size_t compressSIMD(SymbolTable &symbolTable, u8* symbolBase, size_t nlines, const size_t len[], const u8* line[], size_t size, u8* dst, size_t lenOut[], u8* strOut[], int unroll) {
@@ -452,6 +845,68 @@ static inline size_t compressBulk(SymbolTable &symbolTable, size_t nlines, const
    return curLine;
 }
 
+// BtrFSST: scalar compression using DP parsing (same output format)
+static inline size_t compressBulkDP(SymbolTable &symbolTable,
+                                    size_t nlines,
+                                    const size_t lenIn[],
+                                    const u8* strIn[],
+                                    size_t size,
+                                    u8* out,
+                                    size_t lenOut[],
+                                    u8* strOut[])
+{
+   const u8 *cur = NULL, *end = NULL, *lim = out + size;
+
+   u8 buf[512+8] = {}; /* +8 sentinel is to avoid 8-byte unaligned-loads going beyond 511 out-of-bounds */
+
+   for (size_t curLine=0; curLine<nlines; curLine++) {
+      size_t curOff = 0;
+      strOut[curLine] = out;
+
+      size_t chunk;
+      do {
+         cur = strIn[curLine] + curOff;
+         chunk = lenIn[curLine] - curOff;
+         if (chunk > 511) chunk = 511;
+
+         // conservative buffer check (same as original approach)
+         if ((2*chunk + 7) > (size_t)(lim - out)) {
+            return curLine; // out of memory
+         }
+
+         // copy to local buffer and append terminator sentinel
+         memcpy(buf, cur, chunk);
+         buf[chunk] = (u8) symbolTable.terminator;
+
+         // DP over the chunk (final layout after finalize)
+         symbolTable.buildDP(buf, chunk, /*finalLayout=*/true);
+
+         // emit codes
+         size_t pos = 0;
+         while (pos < chunk) {
+            u16 code = symbolTable.dpChoice[pos];
+
+            if (code == 511) {
+               // escape: emit 255 then literal byte
+               *out++ = (u8) FSST_ESC;
+               *out++ = (u8) buf[pos];
+               pos += 1;
+            } else {
+               // real symbol code (0..nSymbols-1)
+               *out++ = (u8) code;
+               pos += symbolTable.symbols[code].length();
+            }
+         }
+
+      } while ((curOff += chunk) < lenIn[curLine]);
+
+      lenOut[curLine] = (size_t)(out - strOut[curLine]);
+   }
+
+   return nlines;
+}
+
+
 #define FSST_SAMPLELINE ((size_t) 512)
 
 // quickly select a uniformly random set of lines such that we have between [FSST_SAMPLETARGET,FSST_SAMPLEMAXSZ) string bytes
@@ -505,6 +960,32 @@ extern "C" fsst_encoder_t* fsst_create(size_t n, const size_t lenIn[], const u8 
    delete[] sampleBuf; 
    return (fsst_encoder_t*) encoder;
 }
+
+extern "C" fsst_encoder_t* Btrfsst_create(size_t n,
+                                         const size_t lenIn[],
+                                         const u8 *strIn[],
+                                         int zeroTerminated,
+                                         const fsst_options_t* optp)
+{
+   fsst_options_t opt = optp ? *optp : fsst_options_t{0};
+
+   u8* sampleBuf = new u8[FSST_SAMPLEMAXSZ];
+   const size_t *sampleLen = lenIn;
+   vector<const u8*> sample = makeSample(sampleBuf, strIn, &sampleLen, n?n:1);
+
+   Encoder *encoder = new Encoder();
+
+   if (opt.flags == 0) {
+      encoder->symbolTable = shared_ptr<SymbolTable>(buildSymbolTable(encoder->counters, sample, sampleLen, zeroTerminated));
+   } else {
+      encoder->symbolTable = shared_ptr<SymbolTable>(Btrfsst_buildSymbolTable(encoder->counters, sample, sampleLen, zeroTerminated, opt));
+   }
+
+   if (sampleLen != lenIn) delete[] sampleLen;
+   delete[] sampleBuf;
+   return (fsst_encoder_t*) encoder;
+}
+
 
 /* create another encoder instance, necessary to do multi-threaded encoding using the same symbol table */
 extern "C" fsst_encoder_t* fsst_duplicate(fsst_encoder_t *encoder) {
@@ -632,6 +1113,30 @@ extern "C" size_t fsst_compress(fsst_encoder_t *encoder, size_t nlines, const si
    size_t totLen = accumulate(lenIn, lenIn+nlines, 0);
    int simd = totLen > nlines*12 && (nlines > 64 || totLen > (size_t) 1<<15); 
    return _compressAuto((Encoder*) encoder, nlines, lenIn, strIn, size, output, lenOut, strOut, 3*simd);
+}
+
+extern "C" size_t Btrfsst_compress(fsst_encoder_t *encoder,
+                                  size_t nlines,
+                                  const size_t lenIn[],
+                                  const u8 *strIn[],
+                                  size_t size,
+                                  u8 *output,
+                                  size_t *lenOut,
+                                  u8 *strOut[],
+                                  const fsst_options_t* optp)
+{
+   fsst_options_t opt = optp ? *optp : fsst_options_t{0};
+   Encoder* e = (Encoder*) encoder;
+
+   if (opt.flags & FSST_OPT_DP_ENCODE) {
+      // DP encoding uses scalar path (keeps format identical)
+      return compressBulkDP(*e->symbolTable, nlines, lenIn, strIn, size, output, lenOut, strOut);
+   }
+
+   // otherwise: original auto path (may use AVX512)
+   size_t totLen = accumulate(lenIn, lenIn+nlines, 0);
+   int simd = totLen > nlines*12 && (nlines > 64 || totLen > (size_t) 1<<15);
+   return _compressAuto(e, nlines, lenIn, strIn, size, output, lenOut, strOut, 3*simd);
 }
 
 /* deallocate encoder */

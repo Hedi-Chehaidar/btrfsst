@@ -31,6 +31,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stddef.h>
+#include <unordered_map>
 
 using namespace std;
 
@@ -184,6 +185,120 @@ struct SymbolTable {
    bool zeroTerminated;   // whether we are expecting zero-terminated strings (we then also produce zero-terminated compressed strings)
    u16 lenHisto[FSST_CODE_BITS]; // lenHisto[x] is the amount of symbols of byte-length (x+1) in this SymbolTable
 
+   // BtrFSST: Trie + DP parsing
+   struct TrieNode {
+      int symbolCode;      // code of a symbol ending here, -1 if none
+      int child[256];      // child indices, -1 if absent
+      TrieNode() : symbolCode(-1) {
+         for (int i=0;i<256;i++) child[i] = -1;
+      }
+   };
+
+   // DP working area
+   vector<u32> dpCost;      // dpCost[i] = minimal encoded length of suffix starting at i
+   vector<u16> dpChoice;    // dpChoice[i] = chosen code at i (pre-finalize: 0..511; final: 0..255 plus 511=escape)
+
+   // Trie storage (only built when needed)
+   vector<TrieNode> trie;
+   bool trieReadyTrain = false;  // trie represents pre-finalize codes (FSST_CODE_BASE..)
+   bool trieReadyFinal = false;  // trie represents final codes (0..nSymbols-1)
+
+   inline void trieReset() {
+      trie.clear();
+      trie.reserve(8 * 256 + 1);
+      trie.emplace_back(); // root
+   }
+
+   inline void trieInsertSymbolBytes(const Symbol& s, u16 code) {
+      int node = 0;
+      u32 L = s.length();
+      // Ignore "pseudo" symbols in the trie (we only store real symbols)
+      for (u32 i=0; i<L; i++) {
+         u8 b = (u8) s.val.str[i];
+         int& nxt = trie[node].child[b];
+         if (nxt == -1) {
+            nxt = (int) trie.size();
+            trie.emplace_back();
+         }
+         node = trie[node].child[b];
+      }
+      trie[node].symbolCode = (int) code;
+   }
+
+   inline void rebuildTrie(bool finalLayout) {
+      trieReset();
+      if (finalLayout) {
+         // symbols[0..nSymbols) are real symbols after finalize()
+         for (u32 code=0; code<nSymbols; code++) {
+            trieInsertSymbolBytes(symbols[code], (u16) code);
+         }
+         trieReadyFinal = true;
+         trieReadyTrain = false;
+      } else {
+         // symbols[FSST_CODE_BASE..FSST_CODE_BASE+nSymbols) are real symbols during training
+         for (u32 i=0; i<nSymbols; i++) {
+            u16 code = (u16)(FSST_CODE_BASE + i);
+            trieInsertSymbolBytes(symbols[code], code);
+         }
+         trieReadyTrain = true;
+         trieReadyFinal = false;
+      }
+   }
+
+   // Build DP parse for a byte sequence (n bytes).
+   // If finalLayout==false: escape detection is (code < FSST_CODE_BASE).
+   // If finalLayout==true : escape detection is (code == 511)  (as produced by finalize()).
+   inline void buildDP(const u8* data, size_t n, bool finalLayout) {
+      // ensure trie is built for the current layout
+      if (finalLayout) {
+         if (!trieReadyFinal) rebuildTrie(true);
+      } else {
+         if (!trieReadyTrain) rebuildTrie(false);
+      }
+
+      dpCost.assign(n + 1, 0);
+      dpChoice.assign(n, 0);
+
+      for (int i=(int)n-1; i>=0; --i) {
+         u8 b = data[i];
+
+         // literal candidate (either real 1-byte symbol if present, or escape)
+         u16 litCode = byteCodes[b] & FSST_CODE_MASK; // works pre- and post-finalize
+         u32 litCost;
+         if (finalLayout) {
+            // after finalize: 511 means escape(255 + byte), otherwise 1 byte code
+            litCost = (litCode == 511 ? 2u : 1u) + dpCost[i+1];
+         } else {
+            // during training: codes < 256 are pseudo escaped bytes
+            litCost = (1u + (litCode < FSST_CODE_BASE)) + dpCost[i+1];
+         }
+
+         u32 bestCost = litCost;
+         u16 bestCode = litCode;
+
+         // walk trie for real symbols (1..8 bytes)
+         int node = 0;
+         int limit = (int) min<size_t>(Symbol::maxLength, n - (size_t)i);
+         for (int off=0; off<limit; ++off) {
+            u8 bb = data[i + off];
+            node = trie[node].child[bb];
+            if (node == -1) break;
+            int code = trie[node].symbolCode;
+            if (code != -1) {
+               u32 L = (u32)(off + 1);
+               u32 cost = 1u + dpCost[i + (int)L]; // real symbol always emits 1 byte
+               if (cost <= bestCost) {
+                  bestCost = cost;
+                  bestCode = (u16) code;
+               }
+            }
+         }
+
+         dpCost[i] = bestCost;
+         dpChoice[i] = bestCode;
+      }
+   }
+
    SymbolTable() : nSymbols(0), suffixLim(FSST_CODE_MAX), terminator(0), zeroTerminated(false) {
       // stuff done once at startup
       for (u32 i=0; i<256; i++) {
@@ -228,6 +343,13 @@ struct SymbolTable {
           }           
       } 
       nSymbols = 0; // no need to clean symbols[] as no symbols are used
+      // reset flags and clear vectors for BtrFSST
+      trieReadyTrain = false;
+      trieReadyFinal = false;
+      trie.clear();
+      dpCost.clear();
+      dpChoice.clear();
+
    }
    bool hashInsert(Symbol s) {
       u32 idx = s.hash() & (hashTabSize-1);
@@ -342,6 +464,11 @@ struct SymbolTable {
        for(u32 i=0; i<hashTabSize; i++)
           if (hashTab[i].icl < FSST_ICL_FREE)
              hashTab[i] = symbols[newCode[(u8) hashTab[i].code()]];
+
+       // if someone later uses DP encoding, ensure trie can be rebuilt in final layout
+       trieReadyTrain = false;
+       trieReadyFinal = false;
+
    }
 };
 

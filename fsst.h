@@ -63,7 +63,7 @@ static inline int __builtin_ctzl(unsigned long long x) {
 #ifdef __cplusplus
 #define FSST_FALLTHROUGH [[fallthrough]]
 #include <cstring>
-extern "C" {
+extern "C" {   
 #else
 #define FSST_FALLTHROUGH 
 #endif
@@ -75,6 +75,16 @@ extern "C" {
 
 /* Data structure needed for compressing strings - use fsst_duplicate() to create thread-local copies. Use fsst_destroy() to free. */
 typedef void* fsst_encoder_t; /* opaque type - it wraps around a rather large (~900KB) C++ object */
+
+// Btrfsst innovations as flags to allow flexibility in table construction and encoding
+#define FSST_OPT_DP_TRAIN   (1u<<0)
+#define FSST_OPT_DP_ENCODE  (1u<<1)
+#define FSST_OPT_TRIPLES    (1u<<2)
+#define FSST_OPT_PRUNE      (1u<<3)
+
+typedef struct {
+  unsigned flags;
+} fsst_options_t;
 
 /* Data structure needed for decompressing strings - read-only and thus can be shared between multiple decompressing threads. */
 typedef struct {
@@ -92,6 +102,22 @@ fsst_create(
    const unsigned char *strIn[],  /* IN: string start pointers. */
    int zeroTerminated       /* IN: whether input strings are zero-terminated. If so, encoded strings are as well (i.e. symbol[0]=""). */
 );
+
+
+
+
+fsst_encoder_t* Btrfsst_create(size_t n, const size_t lenIn[],
+                               const unsigned char *strIn[],
+                               int zeroTerminated,
+                               const fsst_options_t* opt);
+
+size_t Btrfsst_compress(fsst_encoder_t *encoder,
+                        size_t nstrings, const size_t lenIn[],
+                        const unsigned char *strIn[],
+                        size_t outsize, unsigned char *output,
+                        size_t lenOut[], unsigned char *strOut[],
+                        const fsst_options_t* opt);
+
 
 /* Create another encoder instance, necessary to do multi-threaded encoding using the same symbol table. */ 
 fsst_encoder_t*    

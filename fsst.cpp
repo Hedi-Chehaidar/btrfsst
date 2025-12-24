@@ -111,19 +111,52 @@ void writer(ofstream& dst) {
 
 int main(int argc, char* argv[]) {
    size_t srcTot = 0, dstTot = 0;
-   if (argc < 2 || argc > 4 || (argc == 4 && (argv[1][0] != '-' || argv[1][1] != 'd' || argv[1][2]))) {
-      cerr << "usage: " << argv[0] << " -d infile outfile" << endl;
-      cerr << "       " << argv[0] << " infile outfile" << endl;
-      cerr << "       " << argv[0] << " infile" << endl;
+   fsst_options_t opt = {0};
+   auto isFlag = [](const char* s, const char* f){ return strcmp(s,f)==0; };
+
+   if (argc < 2) {
+      cerr << "usage: " << argv[0] << " [--dp-train] [--dp-encode] [--triples] [--prune] infile [outfile]\n"
+           << "       " << argv[0] << " -d infile outfile\n";
       return -1;
    }
+
    decompress = (argc == 4);
-   string srcfile(argv[1+decompress]), dstfile;
-   if (argc == 2) {
-      dstfile = srcfile + ".fsst";
+   int argi = 1;
+
+   // decompress mode: "-d infile outfile"
+   if (argc >= 2 && argv[1][0]=='-' && argv[1][1]=='d' && argv[1][2]==0) {
+      decompress = 1;
+      argi = 2;
    } else {
-      dstfile = argv[2+decompress];
+      decompress = 0;
    }
+
+   // experimental flags (only in compress mode)
+   while (!decompress && argi < argc && argv[argi][0]=='-' && argv[argi][1]=='-') {
+      if (isFlag(argv[argi], "--dp-train"))   opt.flags |= FSST_OPT_DP_TRAIN;
+      else if (isFlag(argv[argi], "--dp-encode")) opt.flags |= FSST_OPT_DP_ENCODE;
+      else if (isFlag(argv[argi], "--triples"))   opt.flags |= FSST_OPT_TRIPLES;
+      else if (isFlag(argv[argi], "--prune"))     opt.flags |= FSST_OPT_PRUNE;
+      else break;
+      argi++;
+   }
+
+   if ((decompress && argc - argi != 2) || (!decompress && (argc - argi < 1 || argc - argi > 2))) {
+      cerr << "bad args.\n";
+      cerr << "usage: " << argv[0] << " [--dp-train] [--dp-encode] [--triples] [--prune] infile [outfile]\n"
+           << "       " << argv[0] << " -d infile outfile\n";
+      return -1;
+   }
+
+   string srcfile(argv[argi]);
+   string dstfile;
+   if (decompress) {
+      dstfile = argv[argi+1];
+   } else {
+      if (argc - argi == 1) dstfile = srcfile + ".fsst";
+      else dstfile = argv[argi+1];
+   }
+
    ifstream src;
    ofstream dst;
    src.open(srcfile, ios::binary);
@@ -166,17 +199,22 @@ int main(int argc, char* argv[]) {
           dstLen[swap] = fsst_decompress(&decoder, srcLen[swap] - hdr, srcBuf[swap] + hdr, FSST_MEMBUF, dstBuf[swap] = dstMem[swap]);
       } else {
          unsigned char tmp[FSST_MAXHEADER];
-         fsst_encoder_t* encoder = fsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0);
+         fsst_encoder_t* encoder = (!opt.flags || opt.flags == FSST_OPT_TRIPLES) ?
+                   Btrfsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0, &opt)
+                   : fsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0);
+
          size_t hdr = fsst_export(encoder, tmp);
-         if (fsst_compress(encoder, 1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]),
-                           FSST_MEMBUF * 2, dstMem[swap] + FSST_MAXHEADER + 3,
-                           &dstLen[swap], &dstBuf[swap]) < 1)
+
+         if (Btrfsst_compress(encoder, 1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]),
+                                                   FSST_MEMBUF * 2, dstMem[swap] + FSST_MAXHEADER + 3,
+                                                   &dstLen[swap], &dstBuf[swap], &opt)<1)
             return -1;
+
          dstLen[swap] += 3 + hdr;
-          dstBuf[swap] -= 3 + hdr;
-          SERIALIZE(dstLen[swap],dstBuf[swap]); // block starts with size
-          copy(tmp, tmp+hdr, dstBuf[swap]+3); // then the header (followed by the compressed bytes which are already there)
-          fsst_destroy(encoder);
+         dstBuf[swap] -= 3 + hdr;
+         SERIALIZE(dstLen[swap],dstBuf[swap]); // block starts with size
+         copy(tmp, tmp+hdr, dstBuf[swap]+3); // then the header (followed by the compressed bytes which are already there)
+         fsst_destroy(encoder);
       }
       srcTot += srcLen[swap];
       dstTot += dstLen[swap];
