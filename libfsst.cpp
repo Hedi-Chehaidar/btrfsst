@@ -266,7 +266,7 @@ struct Count3 {
 };
 
 struct Cand {
-   int gain;
+   u32 gain;
    u16 a, b, c;  // b==0xFFFF => single, c==0xFFFF => pair
    u16 cnt;      // current count
    u8  symLen;
@@ -274,12 +274,6 @@ struct Cand {
    bool operator<(Cand const& o) const { return gain < o.gain; } // max-heap
 };
 
-static inline bool containsTerminatorByte(const libfsst::Symbol& s, u16 terminatorByte) {
-   u32 L = s.length();
-   if (L <= 1) return false;
-   for (u32 i=0;i<L;i++) if ((u8)s.val.str[i] == (u8)terminatorByte) return true;
-   return false;
-}
 
 
 static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
@@ -426,6 +420,7 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
             u16 next = st->dpChoice[pos];
 
             if (sampleFrac < 128) {
+
                counters.count2Inc(code, next);
                // also count extension by next byte if next consumes >1 (avoid double count for 1-byte)
                if (st->symbols[next].length() != 1)
@@ -480,7 +475,7 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
          }
       }
 
-      // force terminator inclusion (same idea as original)
+      // force terminator inclusion (same idea as fsst)
       u16 termCode = st->nSymbols ? (u16)FSST_CODE_BASE : (u16)st->terminator;
       if (termCode < C) c1[termCode] = 65535;
 
@@ -491,13 +486,12 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
          if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
          u8 L = (u8) prevSym[a].length();
          // heuristic: promoting single-byte symbols (*8) helps reduce exception rates and increases [de]compression speed
-         int gain = (L == 1 ? 8 : 1) * cnt ;
+         int gain = (L == 1 ? 8 : L) * cnt ;
          heap.push(Cand{gain, a, 0xFFFF, 0xFFFF, (u16)cnt, L});
       };
       auto pushPair = [&](u16 a, u16 b) {
          int cnt = c2[a][b];
          if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
-         if (prevSym[a].length() == Symbol::maxLength) return;
          u32 Lsum = prevSym[a].length() + prevSym[b].length();
          if (Lsum > Symbol::maxLength) Lsum = Symbol::maxLength;
          heap.push(Cand{(int)Lsum * cnt, a, b, 0xFFFF, (u16)cnt, (u8)Lsum});
@@ -515,9 +509,12 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
       // seed heap
       for (u16 a=0; a<C; a++) pushSingle(a);
       if (sampleFrac < 128) {
-         for (u16 a=0; a<C; a++)
+         for (u16 a=0; a<C; a++) {
+            if(prevSym[a].length() == Symbol::maxLength ||
+                prevSym[a].val.str[0] == st->terminator) continue;
             for (u16 b=0; b<C; b++)
-               if (c2[a][b]) pushPair(a,b);
+               if (prevSym[b].val.str[0] != st->terminator) pushPair(a,b);
+         }
       }
       if ((opt.flags & FSST_OPT_TRIPLES) && sampleFrac < 128) {
          for (auto const& kv : count3.m) {
@@ -525,17 +522,19 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
             u16 a = (u16)(k >> 18);
             u16 b = (u16)((k >> 9) & 511);
             u16 c = (u16)(k & 511);
+            if(prevSym[a].val.str[0] != st->terminator &&
+               prevSym[b].val.str[0] != st->terminator &&
+               prevSym[c].val.str[0] != st->terminator)
             pushTriple(a,b,c);
          }
       }
 
-      SymbolTable next;
-
       // build next table
-      while (next.nSymbols < 255 && !heap.empty()) {
+      st->clear();
+      while (st->nSymbols < 255 && !heap.empty()) {
          Cand cd = heap.top();
          heap.pop();
-         
+
          // recompute current count (lazy fix-up)
          int curCnt = 0;
          if (cd.b == 0xFFFF) curCnt = c1[cd.a];
@@ -545,8 +544,7 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
          if (curCnt <= 0) continue;
          
          //check if this candidate is deleted (ie. count is outdated)
-         int curGain = (int)(cd.symLen == 1 ? 8 : cd.symLen) * curCnt;
-         if (curGain != cd.gain) {
+         if (curCnt != cd.cnt) {
             continue;
          }
 
@@ -562,37 +560,39 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
             s = concat(ab, prevSym[cd.c]);
          }
 
-         // multi-byte symbols cannot contain terminator byte
-         if (containsTerminatorByte(s, st->terminator)) continue;
-
          // insert (hash collisions possible; skip if so)
-         if (!next.add(s)) continue;
+         if (!st->add(s)) continue;
 
          // pruning: reduce counts for parts used
          if ((opt.flags & FSST_OPT_PRUNE) && cd.b != 0xFFFF) {
             int used = curCnt;
 
             // decrement singles
-            c1[cd.a] = max(0, c1[cd.a] - used);
-            c1[cd.b] = max(0, c1[cd.b] - used);
-            pushSingle(cd.a);
-            
-            pushSingle(cd.b);
+            if(cd.c == 0xFFFF) {
+               c1[cd.a] -= used;
+               if(cd.a != cd.b) pushSingle(cd.a);
+               c1[cd.b] -= used;
+               pushSingle(cd.b);
+            }
+            else {
+               c1[cd.a] -= used;
+               if(cd.a != cd.b && cd.a != cd.c) pushSingle(cd.a);
 
-            
-            if (cd.c != 0xFFFF) {
-               c1[cd.c] = max(0, c1[cd.c] - used);
+               c1[cd.b] -= used;
+               if(cd.b != cd.c) pushSingle(cd.b);
+
+               c1[cd.c] -= used;
                pushSingle(cd.c);
                
-               c2[cd.a][cd.b] = max(0, c2[cd.a][cd.b] - used);
-               pushPair(cd.a, cd.b);
-               c2[cd.b][cd.c] = max(0, c2[cd.b][cd.c] - used);
+               c2[cd.a][cd.b] -= used;
+               if(cd.a != cd.b || cd.b != cd.c) pushPair(cd.a, cd.b);
+               
+               c2[cd.b][cd.c] -= used;
                pushPair(cd.b, cd.c);
             }
          }
       }
 
-      *st = next;
 
       // if DP training is enabled, rebuild trie for training layout (so next compressCountDP is fast)
       st->trieReadyTrain = false;

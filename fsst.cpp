@@ -200,8 +200,8 @@ int main(int argc, char* argv[]) {
       } else {
          unsigned char tmp[FSST_MAXHEADER];
          fsst_encoder_t* encoder = (!opt.flags || opt.flags == FSST_OPT_TRIPLES) ?
-                   Btrfsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0, &opt)
-                   : fsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0);
+                  fsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0)
+                  : Btrfsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0, &opt);
 
          size_t hdr = fsst_export(encoder, tmp);
 
@@ -221,8 +221,8 @@ int main(int argc, char* argv[]) {
       srcDoneCPU[swap].post(); // input buffer may be re-used by the reader for the next block
       dstDoneCPU[swap].post(); // output buffer is ready for writing out
    }
-   cerr  << (decompress?"Dec":"C") << "ompressed " << srcTot <<  " bytes into " << dstTot << " bytes ==> " << (int) ((100*dstTot)/srcTot) << "%" << endl;
-
+   //cerr  << (decompress?"Dec":"C") << "ompressed " << srcTot <<  " bytes into " << dstTot << " bytes ==> " << (int) ((100*dstTot)/srcTot) << "%" << endl;
+   cout <<  1.0 * srcTot / dstTot << endl; // output just CF
    // force wait until all background writes finished
    stopThreads = true;
    for(int swap=0; swap<2; swap++) {

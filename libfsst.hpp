@@ -205,7 +205,7 @@ struct SymbolTable {
 
    inline void trieReset() {
       trie.clear();
-      trie.reserve(8 * 256 + 1);
+      trie.reserve(8 * 255 + 1);
       trie.emplace_back(); // root
    }
 
@@ -364,8 +364,10 @@ struct SymbolTable {
       u32 len = s.length();
       s.set_code_len(FSST_CODE_BASE + nSymbols, len);
       if (len == 1) {
+         if( (byteCodes[s.first()] & ((1 << 12) - 1)) >= FSST_CODE_BASE) return false;
          byteCodes[s.first()] = FSST_CODE_BASE + nSymbols + (1<<FSST_LEN_BITS); // len=1 (<<FSST_LEN_BITS)
       } else if (len == 2) {
+         if( (shortCodes[s.first2()] & ((1 << 12) - 1)) >= FSST_CODE_BASE) return false;
          shortCodes[s.first2()] = FSST_CODE_BASE + nSymbols + (2<<FSST_LEN_BITS); // len=2 (<<FSST_LEN_BITS)
       } else if (!hashInsert(s)) {
          return false;
