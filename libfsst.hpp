@@ -205,7 +205,7 @@ struct SymbolTable {
 
    inline void trieReset() {
       trie.clear();
-      trie.reserve(8 * 255 + 1);
+      trie.reserve((8 * 255 + 1));
       trie.emplace_back(); // root
    }
 
@@ -258,44 +258,62 @@ struct SymbolTable {
 
       dpCost.assign(n + 1, 0);
       dpChoice.assign(n, 0);
+      /*deque<int> mn, mx; // indices of min and max dp values from last 8 positions
+      mn.push_back(n); mx.push_back(n);*/
 
       for (int i=(int)n-1; i>=0; --i) {
-         u8 b = data[i];
 
-         // literal candidate (either real 1-byte symbol if present, or escape)
-         u16 litCode = byteCodes[b] & FSST_CODE_MASK; // works pre- and post-finalize
-         u32 litCost;
-         if (finalLayout) {
-            // after finalize: 511 means escape(255 + byte), otherwise 1 byte code
-            litCost = (litCode == 511 ? 2u : 1u) + dpCost[i+1];
-         } else {
-            // during training: codes < 256 are pseudo escaped bytes
-            litCost = (1u + (litCode < FSST_CODE_BASE)) + dpCost[i+1];
+         // drop indices out of window (keep only <= i+8, and also > i)
+         /*if (mn.front() > i + 8) mn.pop_front();
+         if (mx.front() > i + 8) mx.pop_front();*/
+
+         /*if(dpCost[mx.front()] - dpCost[mn.front()] <= THRESHOLD) { // dp is almost constant 
+               int code = findLongestSymbol(data + i, data + min(i + 8, (int)n));
+               dpCost[i] = 1 + (code < FSST_CODE_BASE) + dpCost[i + symbols[code].length()];
+               dpChoice[i] = code;
          }
-
-         u32 bestCost = litCost;
-         u16 bestCode = litCode;
-
-         // walk trie for real symbols (1..8 bytes)
-         int node = 0;
-         int limit = (int) min<size_t>(Symbol::maxLength, n - (size_t)i);
-         for (int off=0; off<limit; ++off) {
-            u8 bb = data[i + off];
-            node = trie[node].child[bb];
-            if (node == -1) break;
-            int code = trie[node].symbolCode;
-            if (code != -1) {
-               u32 L = (u32)(off + 1);
-               u32 cost = 1u + dpCost[i + (int)L]; // real symbol always emits 1 byte
-               if (cost <= bestCost) {
-                  bestCost = cost;
-                  bestCode = (u16) code;
-               }
+         else{*/
+            u8 b = data[i];
+            // literal candidate (either real 1-byte symbol if present, or escape)
+            u16 litCode = byteCodes[b] & FSST_CODE_MASK; // works pre- and post-finalize
+            u32 litCost;
+            if (finalLayout) {
+               // after finalize: 511 means escape(255 + byte), otherwise 1 byte code
+               litCost = (litCode == 511 ? 2u : 1u) + dpCost[i+1];
+            } else {
+               // during training: codes < 256 are pseudo escaped bytes
+               litCost = (1u + (litCode < FSST_CODE_BASE)) + dpCost[i+1];
             }
-         }
+   
+            u32 bestCost = litCost;
+            u16 bestCode = litCode;
+   
+            // walk trie for real symbols (1..8 bytes)
+            int node = 0;
+            int limit = (int) min<size_t>(Symbol::maxLength, n - (size_t)i);
+            for (int off=0; off<limit; ++off) {
+               u8 bb = data[i + off];
+               node = trie[node].child[bb];
+               if (node == -1) break;
+               int code = trie[node].symbolCode;
+               if (code != -1) {
+                  u32 L = (u32)(off + 1);
+                  u32 cost = 1u + dpCost[i + (int)L]; // real symbol always emits 1 byte
+                  if (cost <= bestCost) {
+                     bestCost = cost;
+                     bestCode = (u16) code;
+                  }
+               }
+   
+            }
+            dpCost[i] = bestCost;
+            dpChoice[i] = bestCode;
+         /*}
+         // update min max deques
+         while(!mn.empty() && dpCost[i] <= dpCost[mn.back()]) mn.pop_back();
+         while(!mx.empty() && dpCost[i] >= dpCost[mx.back()]) mx.pop_back();
+         mn.push_back(i); mx.push_back(i);*/
 
-         dpCost[i] = bestCost;
-         dpChoice[i] = bestCode;
       }
    }
 

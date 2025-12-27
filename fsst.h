@@ -45,6 +45,7 @@
  * We optionally support C-style zero-terminated strings (zero appearing only at the end). In this case, the compressed strings are 
  * also zero-terminated strings. In zero-terminated mode, the zero-byte at the end *is* counted in the string byte-length.
  */
+#include "function_profiler.hpp"
 #ifndef FSST_INCLUDED_H
 #define FSST_INCLUDED_H
 
@@ -76,6 +77,7 @@ extern "C" {
 /* Data structure needed for compressing strings - use fsst_duplicate() to create thread-local copies. Use fsst_destroy() to free. */
 typedef void* fsst_encoder_t; /* opaque type - it wraps around a rather large (~900KB) C++ object */
 
+#define THRESHOLD (0)
 // Btrfsst innovations as flags to allow flexibility in table construction and encoding
 #define FSST_OPT_DP_TRAIN   (1u<<0)
 #define FSST_OPT_DP_ENCODE  (1u<<1)

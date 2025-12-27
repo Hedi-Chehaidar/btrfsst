@@ -199,16 +199,17 @@ int main(int argc, char* argv[]) {
           dstLen[swap] = fsst_decompress(&decoder, srcLen[swap] - hdr, srcBuf[swap] + hdr, FSST_MEMBUF, dstBuf[swap] = dstMem[swap]);
       } else {
          unsigned char tmp[FSST_MAXHEADER];
-         fsst_encoder_t* encoder = (!opt.flags || opt.flags == FSST_OPT_TRIPLES) ?
-                  fsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0)
-                  : Btrfsst_create(1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]), 0, &opt);
+         fsst_encoder_t* encoder = Btrfsst_create(1, &srcLen[swap],
+                                        const_cast<const unsigned char **>(&srcBuf[swap]), 0, &opt);
 
          size_t hdr = fsst_export(encoder, tmp);
-
-         if (Btrfsst_compress(encoder, 1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]),
-                                                   FSST_MEMBUF * 2, dstMem[swap] + FSST_MAXHEADER + 3,
-                                                   &dstLen[swap], &dstBuf[swap], &opt)<1)
-            return -1;
+         {
+            //PROFILE_FUNCTION("encoding");
+            if (Btrfsst_compress(encoder, 1, &srcLen[swap], const_cast<const unsigned char **>(&srcBuf[swap]),
+                                                      FSST_MEMBUF * 2, dstMem[swap] + FSST_MAXHEADER + 3,
+                                                      &dstLen[swap], &dstBuf[swap], &opt)<1)
+               return -1;
+         }
 
          dstLen[swap] += 3 + hdr;
          dstBuf[swap] -= 3 + hdr;
@@ -233,4 +234,7 @@ int main(int argc, char* argv[]) {
    dstDoneIO[1].wait();
    readerThread.join();
    writerThread.join();
+   /*ofstream out("../benchmarking/function_profiler.txt");
+   out << "come on!\n";
+   FunctionProfiler::report(out);*/
 }

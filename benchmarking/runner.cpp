@@ -94,6 +94,7 @@ int main() {
         {"BtrFSST", "--dp-train --prune --triples"},
         {"fsst_dp", "--dp-encode"},
         {"BtrFSST_dp", "--dp-train --dp-encode --prune --triples"},
+        {"BtrFSST_dp-only", "--dp-train --dp-encode"}
     };
 
     // Output CSV path

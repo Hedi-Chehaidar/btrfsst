@@ -1,0 +1,5 @@
+cd ../build
+make -j
+cd ../benchmarking
+./runner
+python3 plot_results.py
