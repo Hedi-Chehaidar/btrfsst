@@ -56,14 +56,15 @@ static std::string run_and_capture_stdout(const std::string& cmd, int& exit_code
     while (fgets(buffer, sizeof(buffer), pipe) != nullptr) output += buffer;
 
     int rc = pclose(pipe);
-#if defined(_WIN32)
+    #if defined(_WIN32)
     exit_code = rc;
-#else
+    #else
     if (WIFEXITED(rc)) exit_code = WEXITSTATUS(rc);
     else exit_code = rc;
-#endif
-
+    #endif
+    
     auto t1 = clock::now();
+    assert(rc == 0);
     ms = std::chrono::duration<double>(t1 - t0).count() * 1000;
     return output;
 }
@@ -91,9 +92,9 @@ int main() {
     // Configurations: name + args passed to the binary.
     const std::vector<Config> configs = {
         {"fsst", ""},
-        {"BtrFSST", "--dp-train --prune --triples"},
-        {"fsst_dp", "--dp-encode"},
-        {"BtrFSST_dp", "--dp-train --dp-encode --prune --triples"},
+        {"BtrFSST_no-dp", "--dp-train --prune --triples"},
+        {"BtrFSST_dp-encode", "--dp-encode"},
+        {"BtrFSST_full", "--dp-train --dp-encode --prune --triples"},
         {"BtrFSST_dp-only", "--dp-train --dp-encode"}
     };
 

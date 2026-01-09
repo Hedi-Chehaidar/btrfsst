@@ -94,7 +94,7 @@ def main(csv_path: str):
         )
 
     plt.xlabel("Configuration")
-    plt.ylabel("Time (seconds)")
+    plt.ylabel("Time (milliseconds)")
     plt.xticks(rotation=30, ha="right")
     plt.tight_layout()
     out_png2 = "./plots/Time.png"

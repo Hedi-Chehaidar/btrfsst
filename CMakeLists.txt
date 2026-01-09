@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(fsst)
+project(btrfsst)
 
 find_package(Threads REQUIRED)
 
@@ -39,6 +39,7 @@ add_executable(binary fsst.cpp)
 target_link_libraries (binary LINK_PUBLIC fsst)
 target_link_libraries (binary LINK_PUBLIC Threads::Threads)
 set_target_properties(binary PROPERTIES OUTPUT_NAME fsst)
+
 
 #add_library(fsst12 libfsst12.cpp)
 #add_executable(binary12 fsst.cpp)

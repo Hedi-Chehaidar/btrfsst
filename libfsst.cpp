@@ -168,7 +168,7 @@ SymbolTable *buildSymbolTable(Counters& counters, vector<const u8*> line, const 
       counters.count1Set(terminator,65535); 
 
       auto addOrInc = [&](unordered_set<QSymbol> &cands, Symbol s, u64 count) {
-         //if (count < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
+         if (count < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
          QSymbol q;
          q.symbol = s;
          q.gain = count * s.length();
@@ -187,7 +187,7 @@ SymbolTable *buildSymbolTable(Counters& counters, vector<const u8*> line, const 
 
          // heuristic: promoting single-byte symbols (*8) helps reduce exception rates and increases [de]compression speed
          Symbol s1 = st->symbols[pos1];
-         addOrInc(cands, s1, /*((s1.length()==1)?8LL:1LL)**/cnt1);
+         addOrInc(cands, s1, ((s1.length()==1)?8LL:1LL)*cnt1);
 
          if (sampleFrac >= 128 || // last round we do not create new (combined) symbols
              s1.length() == Symbol::maxLength || // symbol cannot be extended
@@ -226,9 +226,9 @@ SymbolTable *buildSymbolTable(Counters& counters, vector<const u8*> line, const 
    for(size_t frac : {127, 127, 127, 127, 127, 127, 127, 127, 127, 128}) {
       sampleFrac = frac;
 #else
-   for(size_t frac : {127, 127, 127, 127, 128}) {
-      sampleFrac = frac;
-   //for(sampleFrac=8; true; sampleFrac += 30) {
+   //for(size_t frac : {127, 127, 127, 127, 128}) {
+      //sampleFrac = frac;
+   for(sampleFrac=8; true; sampleFrac += 30) {
 #endif
       memset(&counters, 0, sizeof(Counters));
       long gain = compressCount(st, counters);
@@ -280,7 +280,7 @@ struct Cand {
 
 
 
-static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
+SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
                                        vector<const u8*> line,
                                        const size_t len[],
                                        bool zeroTerminated,
@@ -323,10 +323,10 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
          const u8* cur = line[i], *start = cur;
          const u8* end = cur + len[i];
 
-         if (sampleFrac < 128) {
+         /*if (sampleFrac < 128) {
             // in earlier rounds (sampleFrac < 128) we skip data in the sample (reduces overall work ~2x)
             if (rnd128(i) > sampleFrac) continue;
-         }
+         }*/
          if (cur < end) {
             u16 code2 = 255, code1 = st->findLongestSymbol(cur, end);
             cur += st->symbols[code1].length();
@@ -394,9 +394,9 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
          const u8* cur = line[i];
          const size_t n = len[i];
 
-         if (sampleFrac < 128) {
+         /*if (sampleFrac < 128) {
             if (rnd128(i) > sampleFrac) continue;
-         }
+         }*/
          if (n == 0) continue;
 
          // build trie for training layout and DP parse
@@ -412,37 +412,34 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
             u16 code = st->dpChoice[pos];
 
             u32 L = st->symbols[code].length();
-            gain += (int)L - (1 + (code < FSST_CODE_BASE));
+            gain += (int)L - (1 + isEscapeCode(code));
             pos += L;
 
             // count current symbol occurrence
             counters.count1Inc(code);
-            if (L != 1) counters.count1Inc(cur[startPos]); // also count first byte alternative
+            if (!isEscapeCode(code)) counters.count1Inc(cur[startPos]); // also count first byte alternative
 
             if (pos >= n) break;
 
             // next symbol
             u16 next = st->dpChoice[pos];
 
-            if (sampleFrac < 128) {
+            if (sampleFrac < 128 && st->symbols[code].length() < Symbol::maxLength) {
 
                counters.count2Inc(code, next);
                // also count extension by next byte if next consumes >1 (avoid double count for 1-byte)
-               if (st->symbols[next].length() != 1)
+               if (!isEscapeCode(next) /*st->symbols[next].length() != 1*/)
                   counters.count2Inc(code, cur[pos]);
             }
 
             // triples
-            if (opt.flags & FSST_OPT_TRIPLES) {
+            if (sampleFrac < 128 && (opt.flags & FSST_OPT_TRIPLES)) {
                if (prev2 != 0xFFFF) {
                   u32 Lprevs = st->symbols[prev2].length() + st->symbols[prev1].length();
                   if (Lprevs < Symbol::maxLength) {
-                     if (next < FSST_CODE_BASE) {
-                        count3.inc(prev2, prev1, next);
-                     } else {
-                        // analogous "next byte" alternative
+                     count3.inc(prev2, prev1, next);
+                     if(!isEscapeCode(next)) // analogous "next byte" alternative
                         count3.inc(prev2, prev1, cur[pos]);
-                     }
                   }
                }
             }
@@ -483,13 +480,16 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
 
       // force terminator inclusion (same idea as fsst)
       u16 termCode = st->nSymbols ? FSST_CODE_BASE : st->terminator;
+      //u16 termCode = st->byteCodes[st->terminator] & FSST_CODE_MASK;
       if (termCode < C) c1[termCode] = 65535;
-
+      assert(st->symbols[termCode].val.str[0] == st->terminator && st->symbols[termCode].length() == 1);
       priority_queue<Cand> heap;
 
       auto pushSingle = [&](u16 a) {
          int cnt = c1[a];
-         if(!cnt) return;
+         if(cnt <= 0) return;
+         /*assert(cnt >= 0);
+         if(!cnt) return;*/
          //if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
          u8 L = (u8) prevSym[a].length();
          // heuristic: promoting single-byte symbols (*8) helps reduce exception rates and increases [de]compression speed
@@ -498,7 +498,9 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
       };
       auto pushPair = [&](u16 a, u16 b) {
          int cnt = c2[a][b];
-         if(!cnt) return;
+         if(cnt <= 0) return;
+         /*assert(cnt >= 0);
+         if(!cnt) return;*/
          //if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
          u32 Lsum = prevSym[a].length() + prevSym[b].length();
          if (Lsum > Symbol::maxLength) Lsum = Symbol::maxLength;
@@ -506,10 +508,12 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
       };
       auto pushTriple = [&](u16 a, u16 b, u16 c) {
          u16 cnt = count3.get(a,b,c);
-         if(!cnt) return;
+         if(cnt == 0) return;
+         /*assert(cnt >= 0);
+         if(!cnt) return;*/
          //if (cnt < (5*sampleFrac)/128) return; // improves both compression speed (less candidates), but also quality!!
          u32 Lab = prevSym[a].length() + prevSym[b].length();
-         if (Lab >= Symbol::maxLength) return;
+         if (Lab >= Symbol::maxLength) return; // shouldn't happen
          u32 Lsum = Lab + prevSym[c].length();
          if (Lsum > Symbol::maxLength) Lsum = Symbol::maxLength;
          heap.push(Cand{(int)Lsum * (int)cnt, a, b, c, cnt, (u8)Lsum});
@@ -539,8 +543,9 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
       }
 
       // build next table
-      unordered_set<QSymbol> seen;
+      bool first = true;
       st->clear();
+      unordered_set<QSymbol> seen;
       while (st->nSymbols < 255 && !heap.empty()) {
          Cand cd = heap.top();
          heap.pop();
@@ -569,9 +574,12 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
             Symbol ab = concat(prevSym[cd.a], prevSym[cd.b]);
             s = concat(ab, prevSym[cd.c]);
          }
-
+         if(first) {
+            assert(s.val.str[0] == st->terminator && s.length() == 1);
+            first = false;
+         }
          // insert (hash collisions possible; skip if so)
-         /*if( (opt.flags & FSST_OPT_DP_TRAIN) && (opt.flags & FSST_OPT_DP_ENCODE) ) { // don't use fsst hashing
+         if( (opt.flags & FSST_OPT_DP_TRAIN) && (opt.flags & FSST_OPT_DP_ENCODE) ) { // don't use fsst hashing
             QSymbol q; 
             u32 len = cd.symLen;
             q.symbol = s;
@@ -583,7 +591,7 @@ static SymbolTable* Btrfsst_buildSymbolTable(Counters& counters,
             st->symbols[FSST_CODE_BASE + st->nSymbols++] = s;
             st->lenHisto[len-1]++;
          }
-         else*/ if (!st->add(s)) continue;
+         else if (!st->add(s)) continue;
 
          // pruning: reduce counts for parts used
          if ((opt.flags & FSST_OPT_PRUNE) && cd.b != 0xFFFF) {
