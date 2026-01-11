@@ -94,8 +94,8 @@ int main() {
         {"fsst", ""},
         {"BtrFSST_no-dp", "--dp-train --prune --triples"},
         {"BtrFSST_dp-encode", "--dp-encode"},
-        {"BtrFSST_full", "--dp-train --dp-encode --prune --triples"},
-        {"BtrFSST_dp-only", "--dp-train --dp-encode"}
+        {"BtrFSST_dp-only", "--dp-train --dp-encode"},
+        {"BtrFSST_full", "--dp-train --dp-encode --prune --triples"}
     };
 
     // Output CSV path

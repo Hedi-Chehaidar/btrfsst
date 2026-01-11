@@ -110,6 +110,7 @@ void writer(ofstream& dst) {
 }
 
 int main(int argc, char* argv[]) {
+   assert(false);
    size_t srcTot = 0, dstTot = 0;
    fsst_options_t opt = {0};
    auto isFlag = [](const char* s, const char* f){ return strcmp(s,f)==0; };

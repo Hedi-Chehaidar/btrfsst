@@ -432,6 +432,9 @@ SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
                   counters.count2Inc(code, cur[pos]);
             }
 
+            prev2 = prev1;
+            prev1 = code;
+            
             // triples
             if (sampleFrac < 128 && (opt.flags & FSST_OPT_TRIPLES)) {
                if (prev2 != 0xFFFF) {
@@ -444,8 +447,6 @@ SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
                }
             }
 
-            prev2 = prev1;
-            prev1 = code;
          }
       }
       return gain;
@@ -543,9 +544,9 @@ SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
       }
 
       // build next table
-      bool first = true;
       st->clear();
-      unordered_set<QSymbol> seen;
+      unordered_set<u64> seen;
+      //bool first = true;
       while (st->nSymbols < 255 && !heap.empty()) {
          Cand cd = heap.top();
          heap.pop();
@@ -556,7 +557,6 @@ SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
          else if (cd.c == 0xFFFF) curCnt = c2[cd.a][cd.b];
          else curCnt = (int) count3.get(cd.a, cd.b, cd.c);
          
-         if (curCnt <= 0) continue;
          
          //check if this candidate is deleted (ie. count is outdated)
          if (curCnt != cd.cnt) {
@@ -565,6 +565,7 @@ SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
 
          // materialize symbol
          Symbol s;
+         u32 len;
          if (cd.b == 0xFFFF) {
             s = prevSym[cd.a];
          } else if (cd.c == 0xFFFF) {
@@ -574,25 +575,23 @@ SymbolTable *Btrfsst_buildSymbolTable(Counters& counters,
             Symbol ab = concat(prevSym[cd.a], prevSym[cd.b]);
             s = concat(ab, prevSym[cd.c]);
          }
-         if(first) {
-            assert(s.val.str[0] == st->terminator && s.length() == 1);
+         len = s.length();
+         /*if(first) {
+            assert(s.val.str[0] == st->terminator && len == 1);
             first = false;
-         }
+         }*/
          // insert (hash collisions possible; skip if so)
          if( (opt.flags & FSST_OPT_DP_TRAIN) && (opt.flags & FSST_OPT_DP_ENCODE) ) { // don't use fsst hashing
-            QSymbol q; 
-            u32 len = cd.symLen;
-            q.symbol = s;
-            q.gain = len; // length is sufficient to declare equality
-            if(seen.find(q) != seen.end()) continue;
-            seen.insert(q);
+            u64 num = s.load_num();
+            if(seen.find(num) != seen.end()) continue;
+            seen.insert(num);
             // add symbol to st
             s.set_code_len(FSST_CODE_BASE + st->nSymbols, len);
             st->symbols[FSST_CODE_BASE + st->nSymbols++] = s;
             st->lenHisto[len-1]++;
          }
          else if (!st->add(s)) continue;
-
+         
          // pruning: reduce counts for parts used
          if ((opt.flags & FSST_OPT_PRUNE) && cd.b != 0xFFFF) {
             int used = curCnt;
