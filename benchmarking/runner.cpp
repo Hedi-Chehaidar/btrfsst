@@ -350,6 +350,52 @@ static void run_speed_benchmark(const std::vector<SpeedVariant>& variants,
     }
 }
 
+static double average_timed_run(const fs::path& binary,
+                                const std::string& args,
+                                const std::string& timing_flag,
+                                const fs::path& input,
+                                const fs::path& output) {
+    std::ostringstream cmd;
+    cmd << shell_quote(binary.string());
+    if (!args.empty()) cmd << " " << args;
+    cmd << " " << timing_flag << " "
+        << shell_quote(input.string()) << " "
+        << shell_quote(output.string());
+
+    double total = 0.0;
+    for (int rep = 0; rep < 5; ++rep) {
+        int exit_code = 0;
+        const std::string stdout_text = run_and_capture_stdout(cmd.str(), exit_code);
+        total += parse_timing_output(cmd.str(), exit_code, stdout_text);
+    }
+    return total / 5.0;
+}
+
+static void run_runtime_ablation_benchmark(const fs::path& binary,
+                                           const std::vector<Config>& configs,
+                                           const std::vector<fs::path>& files,
+                                           const fs::path& csv_path,
+                                           const fs::path& tmp_root) {
+    std::ofstream out(csv_path);
+    out << "configuration,TableSeconds,EncodeSeconds,file\n";
+
+    const fs::path tmp_out = tmp_root / "runtime_ablation_out.bin";
+    for (const auto& cfg : configs) {
+        for (const auto& file : files) {
+            const double table_seconds =
+                average_timed_run(binary, cfg.args, "--time-table-construction", file, tmp_out);
+            const double encode_seconds =
+                average_timed_run(binary, cfg.args, "--time-compression", file, tmp_out);
+
+            out << cfg.label << ","
+                << table_seconds << ","
+                << encode_seconds << ","
+                << file.string() << "\n";
+        }
+        std::cout << "runtime ablation done: " << cfg.label << " (" << csv_path.filename().string() << ")\n" << std::flush;
+    }
+}
+
 static void run_block_speed_benchmark(const std::vector<SpeedVariant>& variants,
                                       const std::vector<fs::path>& files,
                                       const fs::path& compression_csv,
@@ -413,12 +459,15 @@ static void run_block_speed_benchmark(const std::vector<SpeedVariant>& variants,
 int main(int argc, char** argv) {
     bool only_cf = false;
     bool only_block_speed = false;
+    bool only_runtime_ablation = false;
     for (int i = 1; i < argc; ++i) {
         const std::string arg = argv[i];
         if (arg == "--only-cf") {
             only_cf = true;
         } else if (arg == "--only-block-speed") {
             only_block_speed = true;
+        } else if (arg == "--only-runtime-ablation") {
+            only_runtime_ablation = true;
         } else {
             std::cerr << "unknown argument: " << arg << "\n";
             return 1;
@@ -469,6 +518,44 @@ int main(int argc, char** argv) {
         configs.insert(configs.begin(), Config{label, ""});
         return configs;
     };
+
+    const std::vector<Config> runtime_ablation_configs_8bit = {
+        {"FSST", ""},
+        {"+ dp-train", "--dp-train"},
+        {"+ triples", "--dp-train --triples"},
+        {"+ prune", "--dp-train --triples --prune"},
+        {"FSST + dp-encode", "--dp-encode"},
+        {"OptFSST", "--dp-train --triples --prune --dp-encode"},
+    };
+
+    const std::vector<Config> runtime_ablation_configs_12bit = {
+        {"FSST12", ""},
+        {"+ dp-train", "--dp-train"},
+        {"+ triples", "--dp-train --triples"},
+        {"+ prune", "--dp-train --triples --prune"},
+        {"FSST12 + dp-encode", "--dp-encode"},
+        {"OptFSST12", "--dp-train --triples --prune --dp-encode"},
+    };
+
+    if (only_runtime_ablation) {
+        run_runtime_ablation_benchmark(
+            fsst_scalar,
+            runtime_ablation_configs_8bit,
+            files,
+            csv_dir / "runtime_ablation.csv",
+            tmp_dir);
+
+        run_runtime_ablation_benchmark(
+            fsst12,
+            runtime_ablation_configs_12bit,
+            files,
+            csv_dir / "runtime_ablation12.csv",
+            tmp_dir);
+
+        fs::remove_all(tmp_dir);
+        std::cout << "benchmark runner finished\n";
+        return 0;
+    }
 
     if (!only_cf && !only_block_speed) {
         run_improvement_benchmark(

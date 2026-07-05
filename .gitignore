@@ -37,3 +37,4 @@ benchmarking/snappy_bench
 benchmarking/lz4_bench
 benchmarking/zstd_bench
 benchmarking/__pycache__/
+benchmarking/tmp/

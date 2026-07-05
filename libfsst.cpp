@@ -1044,7 +1044,8 @@ extern "C" fsst_encoder_t* Optfsst_create(size_t n,
 
    Encoder *encoder = new Encoder();
 
-   if (opt.flags == 0) {
+   const unsigned train_flags = opt.flags & (FSST_OPT_DP_TRAIN | FSST_OPT_TRIPLES | FSST_OPT_PRUNE);
+   if (train_flags == 0) {
       encoder->symbolTable = shared_ptr<SymbolTable>(buildSymbolTable(encoder->counters, sample, sampleLen, zeroTerminated));
    } else {
       encoder->symbolTable = shared_ptr<SymbolTable>(Optfsst_buildSymbolTable(encoder->counters, sample, sampleLen, zeroTerminated, opt));

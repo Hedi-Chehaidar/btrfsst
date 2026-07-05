@@ -72,14 +72,14 @@ PLOT_LABELS = {
 # preamble below. Newlines split labels onto two text lines so each line gets
 # its own \colorbox.
 COLORED_PLOT_LABELS_IMPROVEMENT = {
-    "FSST + dp-train":         r"\gray{FSST}" + "\n" + r"+ \blue{dp-train}",
+    "FSST + dp-train":         r"\gray{FSST}" + "\n" + r"+ \red{dp-train}",
     "+ triples (dp-train)":    r"+ \orange{triples}",
     "+ prune":                 r"+ \green{prune}",
     "FSST + dp-encode":        r"\gray{FSST}" + "\n" + r"+ \pblue{dp-encode}",
-    "+ dp-train":              r"+ \blue{dp-train}",
+    "+ dp-train":              r"+ \red{dp-train}",
     "+ triples (dp-encode)":   r"+ \orange{triples}",
     "+ prune = OptFSST":       r"+ \green{prune}" + "\n" + r"= \purple{OptFSST}",
-    "FSST12 + dp-train":       r"\gray{FSST12}" + "\n" + r"+ \blue{dp-train}",
+    "FSST12 + dp-train":       r"\gray{FSST12}" + "\n" + r"+ \red{dp-train}",
     "FSST12 + dp-encode":      r"\gray{FSST12}" + "\n" + r"+ \pblue{dp-encode}",
     "+ prune = OptFSST12":     r"+ \green{prune}" + "\n" + r"= \purple{OptFSST12}",
 }
