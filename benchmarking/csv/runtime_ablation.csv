@@ -1,553 +1,559 @@
 configuration,TableSeconds,EncodeSeconds,file
-FSST,0.00650561,0.0153481,../data/refined/ClickBench/hits/Referer.txt
-FSST,0.0107128,0.0440624,../data/refined/ClickBench/hits/Title.txt
-FSST,0.00463549,0.0136146,../data/refined/ClickBench/hits/URL.txt
-FSST,0.00293556,0.00888119,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
-FSST,0.00211919,0.00345888,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
-FSST,0.0033321,0.00832724,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
-FSST,0.00278392,0.000597915,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
-FSST,0.00218858,0.000813272,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
-FSST,0.00217933,0.00190839,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
-FSST,0.00242055,0.000437368,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
-FSST,0.00272999,3.6774e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
-FSST,0.00206963,7.715e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
-FSST,0.00321947,0.00638926,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
-FSST,0.00215219,0.00213347,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
-FSST,0.00303179,0.000689912,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
-FSST,0.00229607,0.00128202,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
-FSST,0.00213981,0.000815819,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
-FSST,0.00152906,0.000243596,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
-FSST,0.00249752,0.000837592,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
-FSST,0.00265809,0.00113347,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
-FSST,0.00260828,0.000228612,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
-FSST,0.0033714,0.00212862,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
-FSST,0.0017439,0.000461011,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
-FSST,0.00267786,0.000507565,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
-FSST,0.00218898,0.00105709,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
-FSST,0.00851977,0.040024,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
-FSST,0.00233565,0.00179885,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
-FSST,0.00267742,0.00234149,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
-FSST,0.00486766,0.0151874,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
-FSST,0.0176328,0.0880119,../data/refined/NextiaJD/github_issues/body.txt
-FSST,0.00275825,0.00526157,../data/refined/NextiaJD/github_issues/issue_title.txt
-FSST,0.00459048,0.0104469,../data/refined/NextiaJD/github_issues/issue_url.txt
-FSST,0.00292168,0.00790458,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
-FSST,0.00233662,0.000226488,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
-FSST,0.00269025,0.00556289,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
-FSST,0.00752409,0.0243002,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
-FSST,0.0030486,0.00788667,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
-FSST,0.0148191,0.0852023,../data/refined/NextiaJD/reviews_detailed/comments.txt
-FSST,0.00269892,0.00567387,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
-FSST,0.002153,0.0036146,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
-FSST,0.0020248,0.0035526,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
-FSST,0.00215829,0.00520056,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
-FSST,0.00206718,0.00231495,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
-FSST,0.00222804,0.00184933,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
-FSST,0.0021694,0.00105126,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
-FSST,0.00156303,0.0002161,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
-FSST,0.00157284,0.000234,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
-FSST,0.00160036,0.000205809,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
-FSST,0.00504277,0.0116842,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-FSST,0.00518139,0.0118893,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
-FSST,0.00235632,0.00470328,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
-FSST,0.00463345,0.00785114,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
-FSST,0.00539967,0.0126949,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-FSST,0.00208754,0.000929771,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
-FSST,0.00248726,0.00112873,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
-FSST,0.00245069,0.0020096,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
-FSST,0.00261039,0.000578759,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
-FSST,0.00182535,0.000485952,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
-FSST,0.00192637,0.000536134,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
-FSST,0.00188751,0.000731766,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
-FSST,0.00233652,0.00432693,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
-FSST,0.00220435,0.00117628,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
-FSST,0.00224239,0.0021042,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
-FSST,0.00242649,0.00481561,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
-FSST,0.00809452,0.0240448,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
-FSST,0.0069975,0.0227074,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
-FSST,0.00852577,0.0387227,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
-FSST,0.00227691,0.0040942,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
-FSST,0.005363,0.0131308,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
-FSST,0.00211961,0.0019893,../data/refined/dbtext/c_name
-FSST,0.0028625,0.00215486,../data/refined/dbtext/chinese
-FSST,0.00305668,0.000301901,../data/refined/dbtext/city
-FSST,0.00256106,0.000416697,../data/refined/dbtext/credentials
-FSST,0.00330347,0.00463228,../data/refined/dbtext/email
-FSST,0.00259251,0.000803536,../data/refined/dbtext/faust
-FSST,0.00283038,0.00101396,../data/refined/dbtext/firstname
-FSST,0.00182241,0.00183572,../data/refined/dbtext/genome
-FSST,0.00245624,0.000579636,../data/refined/dbtext/hamlet
-FSST,0.00285593,0.000927182,../data/refined/dbtext/hex
-FSST,0.00253081,0.000624406,../data/refined/dbtext/japanese
-FSST,0.00237124,0.00563681,../data/refined/dbtext/l_comment
-FSST,0.00290958,0.00524275,../data/refined/dbtext/lastname
-FSST,0.00244226,0.00294319,../data/refined/dbtext/location
-FSST,0.00290882,0.00508835,../data/refined/dbtext/movies
-FSST,0.00233558,0.00465464,../data/refined/dbtext/ps_comment
-FSST,0.00246071,0.000338138,../data/refined/dbtext/street
-FSST,0.0044756,0.0106423,../data/refined/dbtext/urls
-FSST,0.00247081,0.00364328,../data/refined/dbtext/urls2
-FSST,0.00293756,0.00594882,../data/refined/dbtext/uuid
-FSST,0.00283185,0.00567233,../data/refined/dbtext/wiki
-FSST,0.00287079,0.0074858,../data/refined/dbtext/wikipedia
-FSST,0.0031665,0.00481219,../data/refined/dbtext/yago
-+ dp-train,0.0133642,0.014235,../data/refined/ClickBench/hits/Referer.txt
-+ dp-train,0.0257082,0.0468736,../data/refined/ClickBench/hits/Title.txt
-+ dp-train,0.00980843,0.0132825,../data/refined/ClickBench/hits/URL.txt
-+ dp-train,0.00630123,0.00829258,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
-+ dp-train,0.00559615,0.00324601,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
-+ dp-train,0.00624567,0.00801528,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
-+ dp-train,0.00593633,0.000577777,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
-+ dp-train,0.00609372,0.000800164,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
-+ dp-train,0.00599389,0.00168319,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
-+ dp-train,0.0053751,0.00041061,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
-+ dp-train,0.00613056,3.63152e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
-+ dp-train,0.00535245,7.64934e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
-+ dp-train,0.00646531,0.00627568,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
-+ dp-train,0.00519226,0.00210233,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
-+ dp-train,0.00641186,0.000669481,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
-+ dp-train,0.00604101,0.00153684,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
-+ dp-train,0.00517508,0.000795795,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
-+ dp-train,0.00370943,0.000230574,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
-+ dp-train,0.00548641,0.000820352,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
-+ dp-train,0.00638073,0.000944477,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
-+ dp-train,0.00537687,0.000200571,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
-+ dp-train,0.0064451,0.00196907,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
-+ dp-train,0.00458638,0.000385987,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
-+ dp-train,0.00528639,0.000465239,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
-+ dp-train,0.00609174,0.00121042,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
-+ dp-train,0.0207599,0.0406584,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
-+ dp-train,0.0057616,0.00185359,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
-+ dp-train,0.00606876,0.00227218,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
-+ dp-train,0.0102433,0.0153537,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
-+ dp-train,0.046248,0.0901068,../data/refined/NextiaJD/github_issues/body.txt
-+ dp-train,0.00694372,0.00599963,../data/refined/NextiaJD/github_issues/issue_title.txt
-+ dp-train,0.0111173,0.0122185,../data/refined/NextiaJD/github_issues/issue_url.txt
-+ dp-train,0.00679629,0.00851278,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
-+ dp-train,0.00590385,0.000255525,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
-+ dp-train,0.00665014,0.00538335,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
-+ dp-train,0.0200352,0.0250198,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
-+ dp-train,0.00649327,0.00837513,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
-+ dp-train,0.0429365,0.0937398,../data/refined/NextiaJD/reviews_detailed/comments.txt
-+ dp-train,0.0071237,0.00610445,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
-+ dp-train,0.00564418,0.00376024,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
-+ dp-train,0.00575761,0.00375383,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
-+ dp-train,0.00557527,0.00651968,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
-+ dp-train,0.0063586,0.00236314,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
-+ dp-train,0.00672604,0.0013941,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
-+ dp-train,0.00691849,0.00114603,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
-+ dp-train,0.00295229,0.000225053,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
-+ dp-train,0.00358949,0.000225336,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
-+ dp-train,0.00290649,0.000229973,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
-+ dp-train,0.0140785,0.0130874,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-+ dp-train,0.0146257,0.0141515,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
-+ dp-train,0.00671415,0.00545068,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
-+ dp-train,0.0121073,0.00814338,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
-+ dp-train,0.0146466,0.0128803,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-+ dp-train,0.00623175,0.00114947,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
-+ dp-train,0.0059306,0.00119414,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
-+ dp-train,0.00657113,0.00199636,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
-+ dp-train,0.00530933,0.000541609,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
-+ dp-train,0.00579991,0.000513425,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
-+ dp-train,0.00557375,0.000524178,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
-+ dp-train,0.00598828,0.00080383,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
-+ dp-train,0.00677023,0.00460616,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
-+ dp-train,0.00561175,0.00118287,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
-+ dp-train,0.00621812,0.00194653,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
-+ dp-train,0.00700075,0.00437452,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
-+ dp-train,0.0171438,0.0227185,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
-+ dp-train,0.0173443,0.0232664,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
-+ dp-train,0.0224268,0.0385222,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
-+ dp-train,0.0066338,0.00414495,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
-+ dp-train,0.0142386,0.0145321,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
-+ dp-train,0.00676262,0.00237549,../data/refined/dbtext/c_name
-+ dp-train,0.0063885,0.00239417,../data/refined/dbtext/chinese
-+ dp-train,0.00652278,0.000313018,../data/refined/dbtext/city
-+ dp-train,0.00627913,0.00052355,../data/refined/dbtext/credentials
-+ dp-train,0.00700308,0.00502916,../data/refined/dbtext/email
-+ dp-train,0.00657562,0.000970929,../data/refined/dbtext/faust
-+ dp-train,0.00668658,0.00106626,../data/refined/dbtext/firstname
-+ dp-train,0.00373281,0.00164528,../data/refined/dbtext/genome
-+ dp-train,0.00647272,0.000763544,../data/refined/dbtext/hamlet
-+ dp-train,0.00733393,0.00095646,../data/refined/dbtext/hex
-+ dp-train,0.00638585,0.000663486,../data/refined/dbtext/japanese
-+ dp-train,0.00654698,0.00618616,../data/refined/dbtext/l_comment
-+ dp-train,0.00698685,0.00593105,../data/refined/dbtext/lastname
-+ dp-train,0.00646974,0.00359417,../data/refined/dbtext/location
-+ dp-train,0.00759025,0.00554173,../data/refined/dbtext/movies
-+ dp-train,0.00737922,0.0047219,../data/refined/dbtext/ps_comment
-+ dp-train,0.00638936,0.000342156,../data/refined/dbtext/street
-+ dp-train,0.0110117,0.0125842,../data/refined/dbtext/urls
-+ dp-train,0.00736851,0.00391309,../data/refined/dbtext/urls2
-+ dp-train,0.00655109,0.00564187,../data/refined/dbtext/uuid
-+ dp-train,0.0069885,0.00608905,../data/refined/dbtext/wiki
-+ dp-train,0.0068081,0.00827222,../data/refined/dbtext/wikipedia
-+ dp-train,0.00728269,0.00482321,../data/refined/dbtext/yago
-+ triples,0.0212388,0.0160112,../data/refined/ClickBench/hits/Referer.txt
-+ triples,0.0454784,0.0476833,../data/refined/ClickBench/hits/Title.txt
-+ triples,0.020145,0.0199792,../data/refined/ClickBench/hits/URL.txt
-+ triples,0.0139957,0.0104189,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
-+ triples,0.00897913,0.00369082,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
-+ triples,0.0129855,0.0103733,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
-+ triples,0.011276,0.000655521,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
-+ triples,0.00878778,0.000885511,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
-+ triples,0.008275,0.00188118,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
-+ triples,0.0111362,0.000422662,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
-+ triples,0.0133446,3.69502e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
-+ triples,0.00818268,8.11804e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
-+ triples,0.0110825,0.00681015,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
-+ triples,0.00751447,0.00224395,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
-+ triples,0.0132815,0.000770982,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
-+ triples,0.00954644,0.00138931,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
-+ triples,0.00849377,0.000941229,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
-+ triples,0.00478166,0.000239861,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
-+ triples,0.0111751,0.000895446,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
-+ triples,0.0112148,0.00105043,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
-+ triples,0.00965999,0.000207925,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
-+ triples,0.0134639,0.00200689,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
-+ triples,0.00603432,0.000463772,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
-+ triples,0.00971253,0.000499533,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
-+ triples,0.00851184,0.00113305,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
-+ triples,0.0440092,0.0441755,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
-+ triples,0.0138077,0.00211164,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
-+ triples,0.0105848,0.0024856,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
-+ triples,0.0184491,0.0140713,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
-+ triples,0.0813708,0.0885701,../data/refined/NextiaJD/github_issues/body.txt
-+ triples,0.0122467,0.00609424,../data/refined/NextiaJD/github_issues/issue_title.txt
-+ triples,0.0197412,0.0128604,../data/refined/NextiaJD/github_issues/issue_url.txt
-+ triples,0.0155089,0.00862225,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
-+ triples,0.00885184,0.000265478,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
-+ triples,0.012582,0.00600283,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
-+ triples,0.0318625,0.0285126,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
-+ triples,0.0121592,0.00762896,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
-+ triples,0.0660602,0.0767718,../data/refined/NextiaJD/reviews_detailed/comments.txt
-+ triples,0.0104513,0.00596093,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
-+ triples,0.00657332,0.00355874,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
-+ triples,0.00737421,0.0035869,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
-+ triples,0.00745247,0.00495016,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
-+ triples,0.00739617,0.00168023,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
-+ triples,0.00938978,0.0012483,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
-+ triples,0.00949759,0.00119499,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
-+ triples,0.00368784,0.000205342,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
-+ triples,0.00370111,0.000212099,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
-+ triples,0.0031889,0.000205634,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
-+ triples,0.0192653,0.0116198,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-+ triples,0.0190807,0.0115443,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
-+ triples,0.00784523,0.00436481,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
-+ triples,0.0147209,0.00793707,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
-+ triples,0.0200577,0.0114044,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-+ triples,0.00667837,0.000783127,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
-+ triples,0.00719876,0.00100224,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
-+ triples,0.00782163,0.00173541,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
-+ triples,0.00578082,0.00047165,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
-+ triples,0.00561988,0.000474583,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
-+ triples,0.00522558,0.000410666,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
-+ triples,0.00616275,0.000730772,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
-+ triples,0.00767982,0.00415334,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
-+ triples,0.00764526,0.00104757,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
-+ triples,0.00906718,0.00205677,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
-+ triples,0.00885588,0.00456402,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
-+ triples,0.0290196,0.0235272,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
-+ triples,0.0295876,0.0236595,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
-+ triples,0.0385088,0.0374616,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
-+ triples,0.0103131,0.00465063,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
-+ triples,0.0194308,0.0153871,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
-+ triples,0.00743361,0.00238799,../data/refined/dbtext/c_name
-+ triples,0.0118159,0.00235329,../data/refined/dbtext/chinese
-+ triples,0.0140411,0.000357559,../data/refined/dbtext/city
-+ triples,0.0127942,0.000545768,../data/refined/dbtext/credentials
-+ triples,0.0114109,0.00509494,../data/refined/dbtext/email
-+ triples,0.0125661,0.000925234,../data/refined/dbtext/faust
-+ triples,0.0126819,0.00111664,../data/refined/dbtext/firstname
-+ triples,0.0107135,0.00183369,../data/refined/dbtext/genome
-+ triples,0.0102371,0.000690118,../data/refined/dbtext/hamlet
-+ triples,0.0121963,0.000998035,../data/refined/dbtext/hex
-+ triples,0.0105396,0.000630223,../data/refined/dbtext/japanese
-+ triples,0.00982576,0.00627145,../data/refined/dbtext/l_comment
-+ triples,0.0143733,0.00587988,../data/refined/dbtext/lastname
-+ triples,0.0100173,0.00407691,../data/refined/dbtext/location
-+ triples,0.0140742,0.00539152,../data/refined/dbtext/movies
-+ triples,0.00843261,0.00464522,../data/refined/dbtext/ps_comment
-+ triples,0.0110895,0.000342648,../data/refined/dbtext/street
-+ triples,0.0168487,0.011491,../data/refined/dbtext/urls
-+ triples,0.0105977,0.00390394,../data/refined/dbtext/urls2
-+ triples,0.0121367,0.00700289,../data/refined/dbtext/uuid
-+ triples,0.014424,0.00743892,../data/refined/dbtext/wiki
-+ triples,0.0171321,0.00934135,../data/refined/dbtext/wikipedia
-+ triples,0.0138954,0.00497781,../data/refined/dbtext/yago
-+ prune,0.0215767,0.0171717,../data/refined/ClickBench/hits/Referer.txt
-+ prune,0.0448232,0.0471478,../data/refined/ClickBench/hits/Title.txt
-+ prune,0.0153735,0.0138668,../data/refined/ClickBench/hits/URL.txt
-+ prune,0.0133552,0.00931945,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
-+ prune,0.00725333,0.00363174,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
-+ prune,0.0124139,0.0087112,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
-+ prune,0.00969936,0.000598387,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
-+ prune,0.0087654,0.00105515,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
-+ prune,0.00817101,0.00181213,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
-+ prune,0.0111459,0.000403881,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
-+ prune,0.0128582,3.8389e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
-+ prune,0.00824795,7.65752e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
-+ prune,0.0140443,0.00673048,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
-+ prune,0.00740519,0.00234246,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
-+ prune,0.0128308,0.000764468,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
-+ prune,0.00888891,0.00129632,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
-+ prune,0.00785894,0.00111881,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
-+ prune,0.00469535,0.000247506,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
-+ prune,0.0125988,0.000905706,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
-+ prune,0.0100072,0.00101452,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
-+ prune,0.00971747,0.000201196,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
-+ prune,0.0136736,0.0020292,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
-+ prune,0.00599593,0.000421076,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
-+ prune,0.0106526,0.000506654,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
-+ prune,0.00945002,0.00115315,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
-+ prune,0.0393554,0.0442152,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
-+ prune,0.0115864,0.00198549,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
-+ prune,0.011168,0.00252999,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
-+ prune,0.0195874,0.0141249,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
-+ prune,0.0869972,0.0923976,../data/refined/NextiaJD/github_issues/body.txt
-+ prune,0.0122572,0.00562043,../data/refined/NextiaJD/github_issues/issue_title.txt
-+ prune,0.0170111,0.0117447,../data/refined/NextiaJD/github_issues/issue_url.txt
-+ prune,0.0113016,0.00820391,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
-+ prune,0.00925598,0.000290614,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
-+ prune,0.0121232,0.00592409,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
-+ prune,0.0291716,0.026723,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
-+ prune,0.011461,0.00837228,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
-+ prune,0.0716993,0.0778546,../data/refined/NextiaJD/reviews_detailed/comments.txt
-+ prune,0.0101281,0.00584305,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
-+ prune,0.00674494,0.00366182,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
-+ prune,0.00686785,0.00365783,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
-+ prune,0.00766674,0.00536201,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
-+ prune,0.00709766,0.00166306,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
-+ prune,0.00787446,0.00128436,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
-+ prune,0.00837596,0.00101216,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
-+ prune,0.00325778,0.000199166,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
-+ prune,0.00361351,0.000221352,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
-+ prune,0.00305848,0.000209153,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
-+ prune,0.0199058,0.011404,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-+ prune,0.0194926,0.0113395,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
-+ prune,0.0077301,0.0045009,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
-+ prune,0.0150857,0.00746253,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
-+ prune,0.020729,0.0118899,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-+ prune,0.00701016,0.000752785,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
-+ prune,0.00744495,0.00106964,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
-+ prune,0.00828618,0.00187437,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
-+ prune,0.00587316,0.000482786,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
-+ prune,0.00691618,0.000559288,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
-+ prune,0.006208,0.000489618,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
-+ prune,0.00624647,0.000704171,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
-+ prune,0.00815204,0.00429346,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
-+ prune,0.00777734,0.00111268,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
-+ prune,0.00871855,0.0019489,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
-+ prune,0.00795341,0.00454018,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
-+ prune,0.0274831,0.0212389,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
-+ prune,0.0276466,0.0210816,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
-+ prune,0.034505,0.0344523,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
-+ prune,0.00944228,0.00385527,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
-+ prune,0.0173495,0.0136648,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
-+ prune,0.00699791,0.00204852,../data/refined/dbtext/c_name
-+ prune,0.0108277,0.00221104,../data/refined/dbtext/chinese
-+ prune,0.0111854,0.000292918,../data/refined/dbtext/city
-+ prune,0.010905,0.000429467,../data/refined/dbtext/credentials
-+ prune,0.0115936,0.00476674,../data/refined/dbtext/email
-+ prune,0.0109353,0.00100453,../data/refined/dbtext/faust
-+ prune,0.0124595,0.00114104,../data/refined/dbtext/firstname
-+ prune,0.0123384,0.00180031,../data/refined/dbtext/genome
-+ prune,0.0104246,0.000686099,../data/refined/dbtext/hamlet
-+ prune,0.0123905,0.00103986,../data/refined/dbtext/hex
-+ prune,0.0134347,0.000669046,../data/refined/dbtext/japanese
-+ prune,0.00870912,0.00560008,../data/refined/dbtext/l_comment
-+ prune,0.0118032,0.00532566,../data/refined/dbtext/lastname
-+ prune,0.00923748,0.00327341,../data/refined/dbtext/location
-+ prune,0.0125842,0.00505354,../data/refined/dbtext/movies
-+ prune,0.00794563,0.00443536,../data/refined/dbtext/ps_comment
-+ prune,0.0112349,0.000374473,../data/refined/dbtext/street
-+ prune,0.016902,0.0102956,../data/refined/dbtext/urls
-+ prune,0.00948891,0.00353385,../data/refined/dbtext/urls2
-+ prune,0.0113614,0.00649724,../data/refined/dbtext/uuid
-+ prune,0.0116232,0.00558324,../data/refined/dbtext/wiki
-+ prune,0.011604,0.00778682,../data/refined/dbtext/wikipedia
-+ prune,0.0125185,0.00450376,../data/refined/dbtext/yago
-FSST + dp-encode,0.00629439,0.0447615,../data/refined/ClickBench/hits/Referer.txt
-FSST + dp-encode,0.0141461,0.13714,../data/refined/ClickBench/hits/Title.txt
-FSST + dp-encode,0.00441952,0.0422091,../data/refined/ClickBench/hits/URL.txt
-FSST + dp-encode,0.00297115,0.0300764,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
-FSST + dp-encode,0.00235036,0.0139518,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
-FSST + dp-encode,0.003002,0.0313878,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
-FSST + dp-encode,0.00260405,0.00196069,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
-FSST + dp-encode,0.00267034,0.00359348,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
-FSST + dp-encode,0.00217284,0.00641128,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
-FSST + dp-encode,0.00254249,0.00144417,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
-FSST + dp-encode,0.00229653,0.000153906,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
-FSST + dp-encode,0.0022634,0.000497412,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
-FSST + dp-encode,0.00325678,0.0239361,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
-FSST + dp-encode,0.00217418,0.0113012,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
-FSST + dp-encode,0.00341698,0.00252871,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
-FSST + dp-encode,0.00244611,0.00520709,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
-FSST + dp-encode,0.00230734,0.00520455,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
-FSST + dp-encode,0.00159876,0.00220596,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
-FSST + dp-encode,0.00291994,0.00299402,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
-FSST + dp-encode,0.00259753,0.00342526,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
-FSST + dp-encode,0.00245997,0.000889333,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
-FSST + dp-encode,0.00325951,0.0069959,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
-FSST + dp-encode,0.00235028,0.00341763,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
-FSST + dp-encode,0.00299885,0.00310124,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
-FSST + dp-encode,0.00270531,0.00616296,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
-FSST + dp-encode,0.0128225,0.14752,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
-FSST + dp-encode,0.00256024,0.00419378,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
-FSST + dp-encode,0.00263604,0.00675871,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
-FSST + dp-encode,0.00543254,0.0568667,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
-FSST + dp-encode,0.0262566,0.30435,../data/refined/NextiaJD/github_issues/body.txt
-FSST + dp-encode,0.003097,0.0195099,../data/refined/NextiaJD/github_issues/issue_title.txt
-FSST + dp-encode,0.00534746,0.0437285,../data/refined/NextiaJD/github_issues/issue_url.txt
-FSST + dp-encode,0.00289492,0.0298901,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
-FSST + dp-encode,0.00220063,0.00124921,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
-FSST + dp-encode,0.00294973,0.0239319,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
-FSST + dp-encode,0.00982543,0.1026,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
-FSST + dp-encode,0.0028649,0.0309343,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
-FSST + dp-encode,0.0227851,0.298127,../data/refined/NextiaJD/reviews_detailed/comments.txt
-FSST + dp-encode,0.00276484,0.0266687,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
-FSST + dp-encode,0.00207782,0.0192136,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
-FSST + dp-encode,0.00207125,0.0226648,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
-FSST + dp-encode,0.00232557,0.0269995,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
-FSST + dp-encode,0.00218136,0.00935457,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
-FSST + dp-encode,0.00222166,0.00700036,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
-FSST + dp-encode,0.00225661,0.00607034,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
-FSST + dp-encode,0.00165681,0.00274982,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
-FSST + dp-encode,0.00145037,0.00271164,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
-FSST + dp-encode,0.00166002,0.00293058,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
-FSST + dp-encode,0.00659148,0.0684126,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-FSST + dp-encode,0.0066716,0.0708347,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
-FSST + dp-encode,0.00238511,0.0234073,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
-FSST + dp-encode,0.00490949,0.0397677,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
-FSST + dp-encode,0.00660249,0.0598931,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-FSST + dp-encode,0.00229449,0.00450013,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
-FSST + dp-encode,0.00226811,0.00636948,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
-FSST + dp-encode,0.00236725,0.00731607,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
-FSST + dp-encode,0.00195044,0.00449707,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
-FSST + dp-encode,0.00175053,0.00428665,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
-FSST + dp-encode,0.0017269,0.0033832,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
-FSST + dp-encode,0.00183407,0.00539531,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
-FSST + dp-encode,0.00239778,0.0172869,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
-FSST + dp-encode,0.00224859,0.00568014,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
-FSST + dp-encode,0.00242263,0.00704156,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
-FSST + dp-encode,0.00234796,0.01762,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
-FSST + dp-encode,0.00771821,0.0737241,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
-FSST + dp-encode,0.00703721,0.0669565,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
-FSST + dp-encode,0.0109758,0.111878,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
-FSST + dp-encode,0.00217952,0.0202961,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
-FSST + dp-encode,0.00607599,0.0593592,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
-FSST + dp-encode,0.00206695,0.0104609,../data/refined/dbtext/c_name
-FSST + dp-encode,0.00276967,0.00574764,../data/refined/dbtext/chinese
-FSST + dp-encode,0.00262712,0.00125631,../data/refined/dbtext/city
-FSST + dp-encode,0.00254981,0.00174506,../data/refined/dbtext/credentials
-FSST + dp-encode,0.00269,0.0186618,../data/refined/dbtext/email
-FSST + dp-encode,0.00278959,0.00294666,../data/refined/dbtext/faust
-FSST + dp-encode,0.00279975,0.00349582,../data/refined/dbtext/firstname
-FSST + dp-encode,0.00192804,0.00968174,../data/refined/dbtext/genome
-FSST + dp-encode,0.00259603,0.00258424,../data/refined/dbtext/hamlet
-FSST + dp-encode,0.00325527,0.00504144,../data/refined/dbtext/hex
-FSST + dp-encode,0.00250587,0.00193181,../data/refined/dbtext/japanese
-FSST + dp-encode,0.00274958,0.0249126,../data/refined/dbtext/l_comment
-FSST + dp-encode,0.00322716,0.0188548,../data/refined/dbtext/lastname
-FSST + dp-encode,0.00258731,0.0152773,../data/refined/dbtext/location
-FSST + dp-encode,0.00291427,0.0173494,../data/refined/dbtext/movies
-FSST + dp-encode,0.00253807,0.0189136,../data/refined/dbtext/ps_comment
-FSST + dp-encode,0.00250784,0.00144864,../data/refined/dbtext/street
-FSST + dp-encode,0.00451896,0.0373056,../data/refined/dbtext/urls
-FSST + dp-encode,0.00261776,0.0122466,../data/refined/dbtext/urls2
-FSST + dp-encode,0.00305353,0.0246352,../data/refined/dbtext/uuid
-FSST + dp-encode,0.00286938,0.0187727,../data/refined/dbtext/wiki
-FSST + dp-encode,0.00278965,0.0254577,../data/refined/dbtext/wikipedia
-FSST + dp-encode,0.00283726,0.0154108,../data/refined/dbtext/yago
-OptFSST,0.0183025,0.0467478,../data/refined/ClickBench/hits/Referer.txt
-OptFSST,0.0387537,0.142345,../data/refined/ClickBench/hits/Title.txt
-OptFSST,0.0125173,0.0429855,../data/refined/ClickBench/hits/URL.txt
-OptFSST,0.00965887,0.0287202,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
-OptFSST,0.00565581,0.0154613,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
-OptFSST,0.0100107,0.028643,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
-OptFSST,0.00815576,0.00188574,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
-OptFSST,0.00643386,0.00369379,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
-OptFSST,0.00579209,0.00586209,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
-OptFSST,0.00930929,0.00130296,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
-OptFSST,0.00976513,0.000134904,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
-OptFSST,0.00576296,0.000690437,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
-OptFSST,0.0101937,0.0197108,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
-OptFSST,0.00508692,0.0109035,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
-OptFSST,0.0108696,0.00269411,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
-OptFSST,0.00743466,0.00601458,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
-OptFSST,0.00655018,0.00568023,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
-OptFSST,0.00480585,0.00279494,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
-OptFSST,0.010239,0.00301165,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
-OptFSST,0.0096022,0.00458501,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
-OptFSST,0.00888113,0.000997433,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
-OptFSST,0.0134582,0.00511862,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
-OptFSST,0.00646943,0.00450369,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
-OptFSST,0.00761348,0.00329016,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
-OptFSST,0.00650337,0.00671279,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
-OptFSST,0.038148,0.162272,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
-OptFSST,0.0100569,0.00433433,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
-OptFSST,0.00868116,0.00674071,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
-OptFSST,0.0176368,0.057646,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
-OptFSST,0.0876282,0.317922,../data/refined/NextiaJD/github_issues/body.txt
-OptFSST,0.0104705,0.0237967,../data/refined/NextiaJD/github_issues/issue_title.txt
-OptFSST,0.0160133,0.0476318,../data/refined/NextiaJD/github_issues/issue_url.txt
-OptFSST,0.00904323,0.031769,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
-OptFSST,0.00725695,0.0010965,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
-OptFSST,0.00935245,0.0252792,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
-OptFSST,0.0284021,0.116059,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
-OptFSST,0.0100532,0.0321826,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
-OptFSST,0.0727868,0.319252,../data/refined/NextiaJD/reviews_detailed/comments.txt
-OptFSST,0.00998726,0.0297299,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
-OptFSST,0.00577029,0.0241868,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
-OptFSST,0.00568027,0.0215429,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
-OptFSST,0.00631501,0.0232791,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
-OptFSST,0.00710102,0.0118799,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
-OptFSST,0.00666657,0.00885506,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
-OptFSST,0.00750223,0.00743462,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
-OptFSST,0.00367729,0.00298496,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
-OptFSST,0.00438528,0.00292116,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
-OptFSST,0.00372553,0.00288273,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
-OptFSST,0.0201642,0.0693806,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-OptFSST,0.0223879,0.067946,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
-OptFSST,0.00647926,0.027532,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
-OptFSST,0.0148941,0.0469337,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
-OptFSST,0.0207093,0.0640175,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
-OptFSST,0.00636295,0.00570309,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
-OptFSST,0.00721468,0.00725806,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
-OptFSST,0.00749953,0.00959288,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
-OptFSST,0.00560476,0.00518963,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
-OptFSST,0.00588132,0.00615541,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
-OptFSST,0.00532391,0.00489955,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
-OptFSST,0.00663436,0.00670782,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
-OptFSST,0.00767133,0.0238164,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
-OptFSST,0.00679743,0.00706017,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
-OptFSST,0.00733191,0.00986885,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
-OptFSST,0.00752881,0.023154,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
-OptFSST,0.03003,0.078235,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
-OptFSST,0.0286149,0.0839697,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
-OptFSST,0.0376935,0.126898,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
-OptFSST,0.00938213,0.0230698,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
-OptFSST,0.0184664,0.0768232,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
-OptFSST,0.0068465,0.0140271,../data/refined/dbtext/c_name
-OptFSST,0.0115812,0.00613629,../data/refined/dbtext/chinese
-OptFSST,0.0107554,0.00129166,../data/refined/dbtext/city
-OptFSST,0.0105617,0.00186548,../data/refined/dbtext/credentials
-OptFSST,0.0116274,0.0208222,../data/refined/dbtext/email
-OptFSST,0.0111228,0.00340218,../data/refined/dbtext/faust
-OptFSST,0.0115841,0.00395088,../data/refined/dbtext/firstname
-OptFSST,0.00850403,0.00967929,../data/refined/dbtext/genome
-OptFSST,0.00918976,0.00251757,../data/refined/dbtext/hamlet
-OptFSST,0.0121819,0.00522691,../data/refined/dbtext/hex
-OptFSST,0.00935054,0.00218,../data/refined/dbtext/japanese
-OptFSST,0.00791988,0.0301286,../data/refined/dbtext/l_comment
-OptFSST,0.0118306,0.021544,../data/refined/dbtext/lastname
-OptFSST,0.00827359,0.0164488,../data/refined/dbtext/location
-OptFSST,0.014042,0.0196635,../data/refined/dbtext/movies
-OptFSST,0.00859778,0.0226742,../data/refined/dbtext/ps_comment
-OptFSST,0.00920542,0.00144535,../data/refined/dbtext/street
-OptFSST,0.0161669,0.0507654,../data/refined/dbtext/urls
-OptFSST,0.00986945,0.0167937,../data/refined/dbtext/urls2
-OptFSST,0.0103459,0.0367114,../data/refined/dbtext/uuid
-OptFSST,0.0138495,0.0211819,../data/refined/dbtext/wiki
-OptFSST,0.0115039,0.0302436,../data/refined/dbtext/wikipedia
-OptFSST,0.0134447,0.016863,../data/refined/dbtext/yago
+FSST,0.00589674,0.0194167,../data/refined/ClickBench/hits/Referer.txt
+FSST,0.0118848,0.0622151,../data/refined/ClickBench/hits/Title.txt
+FSST,0.00482067,0.0181371,../data/refined/ClickBench/hits/URL.txt
+FSST,0.00318283,0.0111846,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
+FSST,0.0019467,0.00474009,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
+FSST,0.00301297,0.0112128,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
+FSST,0.00274092,0.00082892,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
+FSST,0.00224578,0.00116266,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
+FSST,0.00214733,0.00252271,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
+FSST,0.00258191,0.000565602,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
+FSST,0.00227179,4.3866e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
+FSST,0.00201002,0.000113051,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
+FSST,0.00294774,0.00866659,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
+FSST,0.00192999,0.00352236,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
+FSST,0.00353714,0.000976685,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
+FSST,0.00228873,0.00177095,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
+FSST,0.00222721,0.00125696,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
+FSST,0.00139308,0.000368437,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
+FSST,0.00278454,0.00111085,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
+FSST,0.00266429,0.00139613,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
+FSST,0.00237773,0.000282654,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
+FSST,0.00321479,0.00274908,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
+FSST,0.00152861,0.000602651,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
+FSST,0.00215289,0.000750084,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
+FSST,0.00220077,0.00158796,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
+FSST,0.0103769,0.053376,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
+FSST,0.00266778,0.00265457,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
+FSST,0.00250882,0.00316866,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
+FSST,0.00525696,0.0227513,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
+FSST,0.0196416,0.117869,../data/refined/NextiaJD/github_issues/body.txt
+FSST,0.00301782,0.00740865,../data/refined/NextiaJD/github_issues/issue_title.txt
+FSST,0.00473732,0.0142505,../data/refined/NextiaJD/github_issues/issue_url.txt
+FSST,0.00282944,0.0108611,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
+FSST,0.00231013,0.000345545,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
+FSST,0.00278866,0.00779566,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
+FSST,0.00728716,0.0375172,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
+FSST,0.00279548,0.0108425,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
+FSST,0.0177353,0.11412,../data/refined/NextiaJD/reviews_detailed/comments.txt
+FSST,0.0031043,0.00834941,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
+FSST,0.00190444,0.00524917,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
+FSST,0.00196186,0.00526657,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
+FSST,0.00224634,0.00781391,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
+FSST,0.00213017,0.00315918,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
+FSST,0.00197818,0.00238585,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
+FSST,0.00209665,0.00150167,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
+FSST,0.00129268,0.000289578,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
+FSST,0.00132154,0.000315562,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
+FSST,0.00124655,0.00029233,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
+FSST,0.00548216,0.0164095,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
+FSST,0.00550849,0.0164561,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
+FSST,0.0021713,0.00627722,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
+FSST,0.00483678,0.0116031,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
+FSST,0.00598691,0.0162096,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
+FSST,0.00209706,0.00126048,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
+FSST,0.00221467,0.0016074,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
+FSST,0.00229779,0.00274614,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
+FSST,0.00150143,0.000812263,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
+FSST,0.00156235,0.000643267,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
+FSST,0.00159932,0.000729397,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
+FSST,0.00157682,0.00104263,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
+FSST,0.00223821,0.00620234,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
+FSST,0.00218186,0.00158257,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
+FSST,0.00223227,0.00275672,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
+FSST,0.00226161,0.00618452,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
+FSST,0.00815019,0.0305256,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
+FSST,0.0081841,0.0304493,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
+FSST,0.01031,0.0518461,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
+FSST,0.00229971,0.00554595,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
+FSST,0.00579584,0.0194528,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
+FSST,0.0033262,0.00633924,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt.fsst
+FSST,0.00218257,0.00303753,../data/refined/dbtext/c_name
+FSST,0.0030155,0.00295886,../data/refined/dbtext/chinese
+FSST,0.00308106,0.000424719,../data/refined/dbtext/city
+FSST,0.00293797,0.000619615,../data/refined/dbtext/credentials
+FSST,0.00278777,0.00660553,../data/refined/dbtext/email
+FSST,0.00299494,0.00118684,../data/refined/dbtext/faust
+FSST,0.00305568,0.00140387,../data/refined/dbtext/firstname
+FSST,0.00191305,0.00276557,../data/refined/dbtext/genome
+FSST,0.00275952,0.000847046,../data/refined/dbtext/hamlet
+FSST,0.00315918,0.00124357,../data/refined/dbtext/hex
+FSST,0.0027733,0.000872332,../data/refined/dbtext/japanese
+FSST,0.00253044,0.00812239,../data/refined/dbtext/l_comment
+FSST,0.0033884,0.0075995,../data/refined/dbtext/lastname
+FSST,0.00277841,0.00427129,../data/refined/dbtext/location
+FSST,0.00325843,0.00711163,../data/refined/dbtext/movies
+FSST,0.00231563,0.00669905,../data/refined/dbtext/ps_comment
+FSST,0.00295603,0.000464421,../data/refined/dbtext/street
+FSST,0.00492999,0.0154669,../data/refined/dbtext/urls
+FSST,0.00268835,0.00497555,../data/refined/dbtext/urls2
+FSST,0.00288662,0.00867359,../data/refined/dbtext/uuid
+FSST,0.0034595,0.00794178,../data/refined/dbtext/wiki
+FSST,0.00315375,0.0103478,../data/refined/dbtext/wikipedia
+FSST,0.00318833,0.00650943,../data/refined/dbtext/yago
++ dp-train,0.0151465,0.0192406,../data/refined/ClickBench/hits/Referer.txt
++ dp-train,0.0300246,0.0706221,../data/refined/ClickBench/hits/Title.txt
++ dp-train,0.0110467,0.0180154,../data/refined/ClickBench/hits/URL.txt
++ dp-train,0.00666584,0.0112147,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
++ dp-train,0.0058031,0.00458158,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
++ dp-train,0.00668112,0.0111528,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
++ dp-train,0.00635218,0.000805593,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
++ dp-train,0.00598781,0.0011578,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
++ dp-train,0.00589916,0.00239858,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
++ dp-train,0.00568117,0.000560723,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
++ dp-train,0.00641806,4.7199e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
++ dp-train,0.00573441,0.000112139,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
++ dp-train,0.00671138,0.00878712,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
++ dp-train,0.00540097,0.0033806,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
++ dp-train,0.0066993,0.000961345,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
++ dp-train,0.00615519,0.00172097,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
++ dp-train,0.00543599,0.00122216,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
++ dp-train,0.00402093,0.000344666,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
++ dp-train,0.00595406,0.00117254,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
++ dp-train,0.00658539,0.00129197,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
++ dp-train,0.00577726,0.000278191,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
++ dp-train,0.00662641,0.00284557,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
++ dp-train,0.00462341,0.000572669,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
++ dp-train,0.0058908,0.000722576,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
++ dp-train,0.006125,0.00159693,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
++ dp-train,0.0229921,0.0538934,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
++ dp-train,0.00612726,0.00265148,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
++ dp-train,0.00626901,0.00322365,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
++ dp-train,0.0116002,0.0224135,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
++ dp-train,0.0507056,0.117216,../data/refined/NextiaJD/github_issues/body.txt
++ dp-train,0.00666457,0.00754097,../data/refined/NextiaJD/github_issues/issue_title.txt
++ dp-train,0.010787,0.0148787,../data/refined/NextiaJD/github_issues/issue_url.txt
++ dp-train,0.00680972,0.0106925,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
++ dp-train,0.00568663,0.000346036,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
++ dp-train,0.00629087,0.00660872,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
++ dp-train,0.0194559,0.0357467,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
++ dp-train,0.0067246,0.0107158,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
++ dp-train,0.044112,0.107911,../data/refined/NextiaJD/reviews_detailed/comments.txt
++ dp-train,0.00646089,0.0080467,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
++ dp-train,0.00540749,0.00526806,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
++ dp-train,0.00534069,0.00522984,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
++ dp-train,0.00573336,0.00853877,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
++ dp-train,0.00591884,0.0024054,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
++ dp-train,0.00597416,0.00173211,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
++ dp-train,0.00634658,0.00149443,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
++ dp-train,0.00294217,0.00029075,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
++ dp-train,0.00347589,0.000304022,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
++ dp-train,0.0029663,0.000293682,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
++ dp-train,0.0152122,0.0156466,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
++ dp-train,0.0149503,0.0156671,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
++ dp-train,0.00608948,0.00624378,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
++ dp-train,0.0109755,0.0106306,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
++ dp-train,0.0154539,0.0162036,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
++ dp-train,0.00599486,0.00110771,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
++ dp-train,0.00556232,0.00156276,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
++ dp-train,0.00606772,0.00263971,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
++ dp-train,0.00525735,0.000717342,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
++ dp-train,0.00544763,0.000681026,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
++ dp-train,0.00541314,0.00071757,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
++ dp-train,0.00541199,0.00102973,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
++ dp-train,0.00622001,0.00587035,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
++ dp-train,0.00556044,0.00156082,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
++ dp-train,0.00618474,0.00267173,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
++ dp-train,0.0061227,0.00586102,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
++ dp-train,0.017732,0.0292578,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
++ dp-train,0.017654,0.0292686,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
++ dp-train,0.0231154,0.0476682,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
++ dp-train,0.00683105,0.00508844,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
++ dp-train,0.0147136,0.0194069,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
++ dp-train,0.00746162,0.00656694,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt.fsst
++ dp-train,0.00546044,0.00297809,../data/refined/dbtext/c_name
++ dp-train,0.00658162,0.00296519,../data/refined/dbtext/chinese
++ dp-train,0.00646686,0.000427079,../data/refined/dbtext/city
++ dp-train,0.00639541,0.000627477,../data/refined/dbtext/credentials
++ dp-train,0.00667982,0.0066801,../data/refined/dbtext/email
++ dp-train,0.00662236,0.00117453,../data/refined/dbtext/faust
++ dp-train,0.00660957,0.00141844,../data/refined/dbtext/firstname
++ dp-train,0.00371027,0.00236147,../data/refined/dbtext/genome
++ dp-train,0.00629498,0.000876934,../data/refined/dbtext/hamlet
++ dp-train,0.0063534,0.00120312,../data/refined/dbtext/hex
++ dp-train,0.00645039,0.000849501,../data/refined/dbtext/japanese
++ dp-train,0.00657944,0.00800799,../data/refined/dbtext/l_comment
++ dp-train,0.00674455,0.00761808,../data/refined/dbtext/lastname
++ dp-train,0.00586033,0.0046404,../data/refined/dbtext/location
++ dp-train,0.00691349,0.00700512,../data/refined/dbtext/movies
++ dp-train,0.00614315,0.00636736,../data/refined/dbtext/ps_comment
++ dp-train,0.00661205,0.000439474,../data/refined/dbtext/street
++ dp-train,0.0113568,0.0157122,../data/refined/dbtext/urls
++ dp-train,0.00645014,0.00496008,../data/refined/dbtext/urls2
++ dp-train,0.00644307,0.00750704,../data/refined/dbtext/uuid
++ dp-train,0.00685695,0.0078416,../data/refined/dbtext/wiki
++ dp-train,0.00673484,0.0105503,../data/refined/dbtext/wikipedia
++ dp-train,0.00682431,0.0063502,../data/refined/dbtext/yago
++ triples,0.0225324,0.0189227,../data/refined/ClickBench/hits/Referer.txt
++ triples,0.0479135,0.0626032,../data/refined/ClickBench/hits/Title.txt
++ triples,0.0161543,0.0174907,../data/refined/ClickBench/hits/URL.txt
++ triples,0.0124805,0.010919,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
++ triples,0.00731264,0.00467425,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
++ triples,0.0129591,0.011093,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
++ triples,0.0107301,0.000801692,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
++ triples,0.00864658,0.00109955,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
++ triples,0.00801706,0.00232094,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
++ triples,0.0117675,0.000557411,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
++ triples,0.0129714,4.7789e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
++ triples,0.00815236,0.000100993,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
++ triples,0.0121939,0.00859655,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
++ triples,0.00738636,0.00330701,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
++ triples,0.0140981,0.000970424,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
++ triples,0.00917721,0.00169681,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
++ triples,0.00818852,0.00131446,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
++ triples,0.00442829,0.000334223,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
++ triples,0.012209,0.00117025,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
++ triples,0.010481,0.00130149,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
++ triples,0.00968791,0.000273356,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
++ triples,0.0149463,0.00256762,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
++ triples,0.00599044,0.000581663,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
++ triples,0.0103409,0.000736053,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
++ triples,0.00872131,0.00152528,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
++ triples,0.0454682,0.0537512,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
++ triples,0.012581,0.00265423,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
++ triples,0.0115681,0.00328269,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
++ triples,0.0195204,0.0198072,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
++ triples,0.0960741,0.11691,../data/refined/NextiaJD/github_issues/body.txt
++ triples,0.0126791,0.00739759,../data/refined/NextiaJD/github_issues/issue_title.txt
++ triples,0.0184024,0.0144205,../data/refined/NextiaJD/github_issues/issue_url.txt
++ triples,0.0112539,0.0104379,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
++ triples,0.00838584,0.000327652,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
++ triples,0.0119025,0.00679682,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
++ triples,0.0305368,0.0364594,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
++ triples,0.0113263,0.0104278,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
++ triples,0.0833821,0.106804,../data/refined/NextiaJD/reviews_detailed/comments.txt
++ triples,0.0120056,0.00854902,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
++ triples,0.00701115,0.00535109,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
++ triples,0.00692726,0.00530083,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
++ triples,0.00789503,0.00742226,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
++ triples,0.0078941,0.0024023,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
++ triples,0.00850385,0.00172503,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
++ triples,0.00880271,0.00144097,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
++ triples,0.00324574,0.000283672,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
++ triples,0.00399035,0.000305086,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
++ triples,0.00323426,0.000286554,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
++ triples,0.0224654,0.0161183,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
++ triples,0.0226965,0.016139,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
++ triples,0.00853462,0.00607152,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
++ triples,0.0175237,0.0115785,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
++ triples,0.0238343,0.0161816,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
++ triples,0.0073932,0.00110252,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
++ triples,0.00811696,0.00145553,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
++ triples,0.00878046,0.0025126,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
++ triples,0.00558552,0.000654807,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
++ triples,0.00568999,0.000680874,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
++ triples,0.00552094,0.000603155,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
++ triples,0.00592292,0.00102067,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
++ triples,0.00832506,0.00577933,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
++ triples,0.0080354,0.00144814,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
++ triples,0.00881107,0.00250649,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
++ triples,0.00847788,0.005778,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
++ triples,0.0332152,0.0295457,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
++ triples,0.0339495,0.0294676,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
++ triples,0.0440253,0.0478991,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
++ triples,0.0103768,0.00504371,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
++ triples,0.0209139,0.0200285,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
++ triples,0.0192733,0.00664661,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt.fsst
++ triples,0.00721328,0.00329823,../data/refined/dbtext/c_name
++ triples,0.0125024,0.00299855,../data/refined/dbtext/chinese
++ triples,0.012998,0.000425116,../data/refined/dbtext/city
++ triples,0.0125542,0.000635013,../data/refined/dbtext/credentials
++ triples,0.012685,0.00662436,../data/refined/dbtext/email
++ triples,0.0129066,0.00118691,../data/refined/dbtext/faust
++ triples,0.0138324,0.00144356,../data/refined/dbtext/firstname
++ triples,0.0113226,0.00260182,../data/refined/dbtext/genome
++ triples,0.0106179,0.000902973,../data/refined/dbtext/hamlet
++ triples,0.01347,0.00120358,../data/refined/dbtext/hex
++ triples,0.0112642,0.000850814,../data/refined/dbtext/japanese
++ triples,0.00980121,0.00763361,../data/refined/dbtext/l_comment
++ triples,0.0138366,0.00746258,../data/refined/dbtext/lastname
++ triples,0.0104421,0.00472151,../data/refined/dbtext/location
++ triples,0.0148767,0.0070184,../data/refined/dbtext/movies
++ triples,0.00855151,0.00627711,../data/refined/dbtext/ps_comment
++ triples,0.0117959,0.000442893,../data/refined/dbtext/street
++ triples,0.0175833,0.014998,../data/refined/dbtext/urls
++ triples,0.0118431,0.00496313,../data/refined/dbtext/urls2
++ triples,0.0121702,0.00948103,../data/refined/dbtext/uuid
++ triples,0.0147364,0.00786959,../data/refined/dbtext/wiki
++ triples,0.0131856,0.0105743,../data/refined/dbtext/wikipedia
++ triples,0.0149877,0.00635218,../data/refined/dbtext/yago
++ prune,0.0239684,0.0188053,../data/refined/ClickBench/hits/Referer.txt
++ prune,0.048876,0.0639795,../data/refined/ClickBench/hits/Title.txt
++ prune,0.0167072,0.0175789,../data/refined/ClickBench/hits/URL.txt
++ prune,0.0122237,0.0112156,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
++ prune,0.00740225,0.00457565,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
++ prune,0.0129199,0.0110316,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
++ prune,0.010795,0.000791398,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
++ prune,0.00871716,0.00110328,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
++ prune,0.00822948,0.00237528,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
++ prune,0.0118701,0.000559247,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
++ prune,0.0128735,4.91066e-05,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
++ prune,0.00806472,0.000100842,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
++ prune,0.0124265,0.00868434,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
++ prune,0.00736001,0.0031152,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
++ prune,0.0139294,0.000981517,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
++ prune,0.00919003,0.00171539,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
++ prune,0.00807578,0.0014113,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
++ prune,0.00440087,0.000336752,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
++ prune,0.0124692,0.00113951,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
++ prune,0.0108289,0.00130846,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
++ prune,0.0100708,0.000272502,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
++ prune,0.015181,0.00263301,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
++ prune,0.00614676,0.000577018,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
++ prune,0.0103174,0.000733636,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
++ prune,0.00893618,0.00152555,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
++ prune,0.0454673,0.0538706,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
++ prune,0.0128088,0.00263961,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
++ prune,0.0117764,0.00329355,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
++ prune,0.0196027,0.0202897,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
++ prune,0.0979887,0.117518,../data/refined/NextiaJD/github_issues/body.txt
++ prune,0.0131061,0.00755997,../data/refined/NextiaJD/github_issues/issue_title.txt
++ prune,0.0187463,0.0145284,../data/refined/NextiaJD/github_issues/issue_url.txt
++ prune,0.0113574,0.0104218,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
++ prune,0.00871328,0.00033158,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
++ prune,0.012111,0.00671551,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
++ prune,0.0314852,0.0363145,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
++ prune,0.0115347,0.0104504,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
++ prune,0.0862865,0.107603,../data/refined/NextiaJD/reviews_detailed/comments.txt
++ prune,0.012422,0.00848409,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
++ prune,0.00755393,0.00541256,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
++ prune,0.00757331,0.00542022,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
++ prune,0.00815091,0.00815268,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
++ prune,0.00809876,0.00240265,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
++ prune,0.00874146,0.00178783,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
++ prune,0.00929616,0.00140214,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
++ prune,0.00325803,0.000290361,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
++ prune,0.0037907,0.000302419,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
++ prune,0.00322759,0.000288045,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
++ prune,0.0230029,0.0159247,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
++ prune,0.0225985,0.0158858,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
++ prune,0.00839854,0.00625393,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
++ prune,0.0177499,0.010403,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
++ prune,0.0234954,0.0160702,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
++ prune,0.00774679,0.00107813,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
++ prune,0.00811748,0.00144508,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
++ prune,0.00898455,0.00254958,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
++ prune,0.00580084,0.000638604,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
++ prune,0.00602254,0.000661479,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
++ prune,0.00579763,0.000680931,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
++ prune,0.00623244,0.00100077,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
++ prune,0.00836852,0.00577408,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
++ prune,0.00812386,0.00144859,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
++ prune,0.00896764,0.00252704,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
++ prune,0.00831116,0.00575831,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
++ prune,0.0339578,0.0295855,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
++ prune,0.034226,0.0295109,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
++ prune,0.044739,0.0479867,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
++ prune,0.0101693,0.00511975,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
++ prune,0.0210046,0.0199403,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
++ prune,0.0197842,0.00661102,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt.fsst
++ prune,0.00745231,0.0030456,../data/refined/dbtext/c_name
++ prune,0.0127331,0.00299327,../data/refined/dbtext/chinese
++ prune,0.0130114,0.000426787,../data/refined/dbtext/city
++ prune,0.0124276,0.000632431,../data/refined/dbtext/credentials
++ prune,0.0126351,0.00665595,../data/refined/dbtext/email
++ prune,0.0130969,0.00118025,../data/refined/dbtext/faust
++ prune,0.0138519,0.0014472,../data/refined/dbtext/firstname
++ prune,0.0114194,0.00259399,../data/refined/dbtext/genome
++ prune,0.0108591,0.000915647,../data/refined/dbtext/hamlet
++ prune,0.0133511,0.00122903,../data/refined/dbtext/hex
++ prune,0.0112917,0.000858041,../data/refined/dbtext/japanese
++ prune,0.00980773,0.00756188,../data/refined/dbtext/l_comment
++ prune,0.014384,0.00761058,../data/refined/dbtext/lastname
++ prune,0.0108086,0.00475056,../data/refined/dbtext/location
++ prune,0.0147798,0.0070369,../data/refined/dbtext/movies
++ prune,0.00891874,0.00615312,../data/refined/dbtext/ps_comment
++ prune,0.0116717,0.000463484,../data/refined/dbtext/street
++ prune,0.0184028,0.0147236,../data/refined/dbtext/urls
++ prune,0.0116447,0.00493596,../data/refined/dbtext/urls2
++ prune,0.0122287,0.00999704,../data/refined/dbtext/uuid
++ prune,0.014415,0.00778807,../data/refined/dbtext/wiki
++ prune,0.0133371,0.0106852,../data/refined/dbtext/wikipedia
++ prune,0.0151705,0.00630172,../data/refined/dbtext/yago
+FSST + dp-encode,0.00667204,0.0579991,../data/refined/ClickBench/hits/Referer.txt
+FSST + dp-encode,0.0144971,0.175078,../data/refined/ClickBench/hits/Title.txt
+FSST + dp-encode,0.00472818,0.0516126,../data/refined/ClickBench/hits/URL.txt
+FSST + dp-encode,0.00312963,0.0376549,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
+FSST + dp-encode,0.0020394,0.0154442,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
+FSST + dp-encode,0.00313594,0.0361999,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
+FSST + dp-encode,0.00269892,0.00239228,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
+FSST + dp-encode,0.00226557,0.00401178,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
+FSST + dp-encode,0.00216671,0.00700331,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
+FSST + dp-encode,0.00261037,0.00160152,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
+FSST + dp-encode,0.00229407,0.000154289,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
+FSST + dp-encode,0.00203148,0.000519947,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
+FSST + dp-encode,0.00302042,0.0259165,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
+FSST + dp-encode,0.00188411,0.0111642,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
+FSST + dp-encode,0.00319686,0.00303742,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
+FSST + dp-encode,0.00230679,0.00612866,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
+FSST + dp-encode,0.00211171,0.00546716,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
+FSST + dp-encode,0.00144106,0.00214146,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
+FSST + dp-encode,0.00282712,0.00347629,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
+FSST + dp-encode,0.00266142,0.00435907,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
+FSST + dp-encode,0.00239399,0.00107914,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
+FSST + dp-encode,0.00323857,0.00739499,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
+FSST + dp-encode,0.00159715,0.00311268,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
+FSST + dp-encode,0.00214594,0.00299739,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
+FSST + dp-encode,0.00227128,0.00635761,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
+FSST + dp-encode,0.0116057,0.173054,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
+FSST + dp-encode,0.00256371,0.00445253,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
+FSST + dp-encode,0.00256605,0.00743764,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
+FSST + dp-encode,0.00528769,0.0625173,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
+FSST + dp-encode,0.025201,0.351184,../data/refined/NextiaJD/github_issues/body.txt
+FSST + dp-encode,0.0029825,0.0230925,../data/refined/NextiaJD/github_issues/issue_title.txt
+FSST + dp-encode,0.00470649,0.0464133,../data/refined/NextiaJD/github_issues/issue_url.txt
+FSST + dp-encode,0.00282108,0.0352029,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
+FSST + dp-encode,0.00229506,0.00136645,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
+FSST + dp-encode,0.00291031,0.0265318,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
+FSST + dp-encode,0.00855007,0.106713,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
+FSST + dp-encode,0.00285279,0.0352599,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
+FSST + dp-encode,0.0221162,0.340295,../data/refined/NextiaJD/reviews_detailed/comments.txt
+FSST + dp-encode,0.00280726,0.0298791,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
+FSST + dp-encode,0.00195408,0.0196716,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
+FSST + dp-encode,0.00206228,0.0196456,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
+FSST + dp-encode,0.00209589,0.0250112,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
+FSST + dp-encode,0.00205129,0.0105624,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
+FSST + dp-encode,0.00190594,0.00793039,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
+FSST + dp-encode,0.00210714,0.00666393,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
+FSST + dp-encode,0.00123099,0.00283911,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
+FSST + dp-encode,0.00133256,0.00285231,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
+FSST + dp-encode,0.00129201,0.00285961,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
+FSST + dp-encode,0.00591147,0.066323,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
+FSST + dp-encode,0.00588882,0.0663913,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
+FSST + dp-encode,0.00209782,0.0243118,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
+FSST + dp-encode,0.00489272,0.0419612,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
+FSST + dp-encode,0.0063469,0.0624568,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
+FSST + dp-encode,0.00205703,0.00496168,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
+FSST + dp-encode,0.0021038,0.00623625,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
+FSST + dp-encode,0.00224375,0.00817316,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
+FSST + dp-encode,0.00150324,0.00455983,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
+FSST + dp-encode,0.00146774,0.00447674,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
+FSST + dp-encode,0.00150498,0.00365384,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
+FSST + dp-encode,0.00153553,0.00553708,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
+FSST + dp-encode,0.00220097,0.0189803,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
+FSST + dp-encode,0.00215901,0.00622878,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
+FSST + dp-encode,0.00220394,0.00813377,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
+FSST + dp-encode,0.00227408,0.0190152,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
+FSST + dp-encode,0.00785725,0.0881029,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
+FSST + dp-encode,0.00789543,0.0870906,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
+FSST + dp-encode,0.0113617,0.146408,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
+FSST + dp-encode,0.00231846,0.0236576,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
+FSST + dp-encode,0.00617532,0.0647257,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
+FSST + dp-encode,0.00319497,0.0177935,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt.fsst
+FSST + dp-encode,0.00202269,0.0126664,../data/refined/dbtext/c_name
+FSST + dp-encode,0.00300134,0.00745557,../data/refined/dbtext/chinese
+FSST + dp-encode,0.00303077,0.0015216,../data/refined/dbtext/city
+FSST + dp-encode,0.002962,0.0020785,../data/refined/dbtext/credentials
+FSST + dp-encode,0.0028543,0.0234475,../data/refined/dbtext/email
+FSST + dp-encode,0.00304016,0.00388498,../data/refined/dbtext/faust
+FSST + dp-encode,0.00305006,0.00434604,../data/refined/dbtext/firstname
+FSST + dp-encode,0.00182097,0.00683477,../data/refined/dbtext/genome
+FSST + dp-encode,0.0026847,0.00285145,../data/refined/dbtext/hamlet
+FSST + dp-encode,0.00319472,0.00600756,../data/refined/dbtext/hex
+FSST + dp-encode,0.00269885,0.00248107,../data/refined/dbtext/japanese
+FSST + dp-encode,0.00243524,0.0348627,../data/refined/dbtext/l_comment
+FSST + dp-encode,0.00323134,0.0241278,../data/refined/dbtext/lastname
+FSST + dp-encode,0.00271056,0.0183476,../data/refined/dbtext/location
+FSST + dp-encode,0.00331735,0.0221748,../data/refined/dbtext/movies
+FSST + dp-encode,0.00231477,0.025608,../data/refined/dbtext/ps_comment
+FSST + dp-encode,0.00284945,0.00176266,../data/refined/dbtext/street
+FSST + dp-encode,0.00468619,0.04635,../data/refined/dbtext/urls
+FSST + dp-encode,0.00271108,0.0154963,../data/refined/dbtext/urls2
+FSST + dp-encode,0.00281385,0.0293451,../data/refined/dbtext/uuid
+FSST + dp-encode,0.00327613,0.0243833,../data/refined/dbtext/wiki
+FSST + dp-encode,0.0030988,0.0343589,../data/refined/dbtext/wikipedia
+FSST + dp-encode,0.0032475,0.0200455,../data/refined/dbtext/yago
+OptFSST,0.0227121,0.0606284,../data/refined/ClickBench/hits/Referer.txt
+OptFSST,0.046996,0.202043,../data/refined/ClickBench/hits/Title.txt
+OptFSST,0.0158725,0.0556283,../data/refined/ClickBench/hits/URL.txt
+OptFSST,0.0119103,0.0386819,../data/refined/CyclicJoinBench/SNB1-parquet/comment/content.txt
+OptFSST,0.00662337,0.0204179,../data/refined/CyclicJoinBench/SNB1-parquet/forum/title.txt
+OptFSST,0.0117698,0.0389822,../data/refined/CyclicJoinBench/SNB1-parquet/message/content.txt
+OptFSST,0.00983387,0.00262363,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/name.txt
+OptFSST,0.00796283,0.00430629,../data/refined/CyclicJoinBench/SNB1-parquet/organisation/url.txt
+OptFSST,0.00710649,0.0074874,../data/refined/CyclicJoinBench/SNB1-parquet/person/email.txt
+OptFSST,0.0112025,0.00167351,../data/refined/CyclicJoinBench/SNB1-parquet/person/locationIP.txt
+OptFSST,0.0121967,0.000173505,../data/refined/CyclicJoinBench/SNB1-parquet/place/name.txt
+OptFSST,0.0068105,0.000689044,../data/refined/CyclicJoinBench/SNB1-parquet/place/url.txt
+OptFSST,0.0117207,0.0273916,../data/refined/CyclicJoinBench/SNB1-parquet/post/content.txt
+OptFSST,0.00608271,0.0131019,../data/refined/CyclicJoinBench/SNB1-parquet/post/imageFile.txt
+OptFSST,0.0130999,0.00324152,../data/refined/CyclicJoinBench/SNB1-parquet/tag/name.txt
+OptFSST,0.00818716,0.00674274,../data/refined/CyclicJoinBench/SNB1-parquet/tag/url.txt
+OptFSST,0.00757214,0.00628059,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/exon_id.txt
+OptFSST,0.00513235,0.00305143,../data/refined/NextiaJD/Homo_sapiens.GRCh38.92/transcript_support_level.txt
+OptFSST,0.0119915,0.00337156,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/House_Number.txt
+OptFSST,0.00953546,0.00487543,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Intersecting_Street.txt
+OptFSST,0.00873705,0.00114491,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Meter_Number.txt
+OptFSST,0.0143224,0.00651216,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Plate_ID.txt
+OptFSST,0.00557452,0.00479656,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Registration_State.txt
+OptFSST,0.00848038,0.0042357,../data/refined/NextiaJD/Parking_Violations_Issued_Fiscal_Year_2017/Sub_Division.txt
+OptFSST,0.00758641,0.00751205,../data/refined/NextiaJD/Reddit_Comments_7M_2019/author_flair_richtext.txt
+OptFSST,0.0443042,0.187253,../data/refined/NextiaJD/Reddit_Comments_7M_2019/body.txt
+OptFSST,0.0113845,0.00475798,../data/refined/NextiaJD/Reddit_Comments_7M_2019/id.txt
+OptFSST,0.0102018,0.007391,../data/refined/NextiaJD/Reddit_Comments_7M_2019/parent_id.txt
+OptFSST,0.0183994,0.0633712,../data/refined/NextiaJD/Reddit_Comments_7M_2019/permalink.txt
+OptFSST,0.0963015,0.374875,../data/refined/NextiaJD/github_issues/body.txt
+OptFSST,0.0123203,0.0248483,../data/refined/NextiaJD/github_issues/issue_title.txt
+OptFSST,0.0171433,0.0521015,../data/refined/NextiaJD/github_issues/issue_url.txt
+OptFSST,0.0104328,0.0356723,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobTitle.txt
+OptFSST,0.00783538,0.00125156,../data/refined/NextiaJD/glassdoor/gaTrackerDatajobViewTrackingResulttrackingUrl.txt
+OptFSST,0.0107122,0.0280721,../data/refined/NextiaJD/glassdoor/gaTrackerDatapageRequestGuidguid.txt
+OptFSST,0.030685,0.122681,../data/refined/NextiaJD/glassdoor/headerapplyUrl.txt
+OptFSST,0.0104305,0.0358454,../data/refined/NextiaJD/glassdoor/headerjobTitle.txt
+OptFSST,0.0841952,0.360737,../data/refined/NextiaJD/reviews_detailed/comments.txt
+OptFSST,0.0113418,0.0336607,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/1e38bb87b4afa480e0742a526801cf32.txt
+OptFSST,0.00618287,0.0223882,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000.txt
+OptFSST,0.00631373,0.0225135,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Sun_02_Feb_2014_03_17_01_0000_1.txt
+OptFSST,0.0069645,0.0268118,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/Wed_28_Mar_2012_22_40_51_0000.txt
+OptFSST,0.00739186,0.012479,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_expanded_url_u_http_twitter.com_AppsStorefree_status_429815693400604672_photo_1_u_sizes_u_large_u_h_425_u_resize_u_fit_u_w_650_u_small_u_h_222_u_resize_u_fit_u_w_339_u_medium_u_h_392_u_resize_u_fit.txt
+OptFSST,0.00730794,0.00954089,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_https_itunes.apple.com_us_app_id409341019_mt_8_at_10l69N_.txt
+OptFSST,0.00830796,0.00785533,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/_u_itunes.apple.com_us_app_id40934u2026_.txt
+OptFSST,0.00357949,0.00289062,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar.txt
+OptFSST,0.00434969,0.00324816,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_1.txt
+OptFSST,0.00370829,0.00288736,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/ar_2.txt
+OptFSST,0.021606,0.0683174,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
+OptFSST,0.0209155,0.0681138,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg_1.txt
+OptFSST,0.00719384,0.0285039,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree.txt
+OptFSST,0.01613,0.0485019,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/http_twitter.com_AppsStorefree_status_429815693400604672.txt
+OptFSST,0.0222985,0.0647897,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/https_pbs.twimg.com_profile_images_378800000689366873_3c70b1050a3d6c3546ea5362ce486d40_normal.jpeg.txt
+OptFSST,0.00717524,0.00657801,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_10.txt
+OptFSST,0.00750192,0.00779282,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_13.txt
+OptFSST,0.00802336,0.0105633,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_14.txt
+OptFSST,0.00571125,0.00537124,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_17.txt
+OptFSST,0.00576571,0.00532834,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_18.txt
+OptFSST,0.00559196,0.00513384,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_19.txt
+OptFSST,0.0055131,0.00648519,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_21.txt
+OptFSST,0.00784374,0.0253666,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_3.txt
+OptFSST,0.00758425,0.00779719,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_4.txt
+OptFSST,0.00814539,0.010561,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_5.txt
+OptFSST,0.00779002,0.0253877,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/null_9.txt
+OptFSST,0.0332629,0.092179,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6.txt
+OptFSST,0.032794,0.0921091,../data/refined/PublicBIbenchmark/HashTags/HashTags_1/برنامج_للايفون_وايباد_ABC_Smart_تعليم_الاطفال_الحروف_الانجليزيه_والكلمات_ايضا_https_t.co_sdCDAZn9ZE_http_t.co_59oG7AmXH6_1.txt
+OptFSST,0.0430745,0.152992,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/_LoDa_fascinates_me._MobileAL_Alabama.txt
+OptFSST,0.00893386,0.0249856,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_instagram.com_p_2eDZ8JkxhQ_.txt
+OptFSST,0.0194328,0.0725382,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt
+OptFSST,0.0189748,0.0190622,../data/refined/PublicBIbenchmark/IGlocations2/IGlocations2_2/https_scontent.cdninstagram.com_hphotos-xaf1_t51.2885-15_e15_11226819_1604028346502178_113025182_n.jpg.txt.fsst
+OptFSST,0.00690146,0.014459,../data/refined/dbtext/c_name
+OptFSST,0.0123846,0.00724335,../data/refined/dbtext/chinese
+OptFSST,0.0125006,0.00151912,../data/refined/dbtext/city
+OptFSST,0.0117254,0.00231662,../data/refined/dbtext/credentials
+OptFSST,0.0120478,0.0232538,../data/refined/dbtext/email
+OptFSST,0.01225,0.00417225,../data/refined/dbtext/faust
+OptFSST,0.0129485,0.00448922,../data/refined/dbtext/firstname
+OptFSST,0.00856729,0.0110107,../data/refined/dbtext/genome
+OptFSST,0.00989144,0.00309031,../data/refined/dbtext/hamlet
+OptFSST,0.0135579,0.00598806,../data/refined/dbtext/hex
+OptFSST,0.0104542,0.00285734,../data/refined/dbtext/japanese
+OptFSST,0.00864273,0.037733,../data/refined/dbtext/l_comment
+OptFSST,0.013243,0.0240269,../data/refined/dbtext/lastname
+OptFSST,0.00960686,0.0172094,../data/refined/dbtext/location
+OptFSST,0.0143546,0.023241,../data/refined/dbtext/movies
+OptFSST,0.00835701,0.0286842,../data/refined/dbtext/ps_comment
+OptFSST,0.01063,0.00175091,../data/refined/dbtext/street
+OptFSST,0.0170972,0.054995,../data/refined/dbtext/urls
+OptFSST,0.0111176,0.0171649,../data/refined/dbtext/urls2
+OptFSST,0.0112355,0.0368121,../data/refined/dbtext/uuid
+OptFSST,0.0144385,0.0256251,../data/refined/dbtext/wiki
+OptFSST,0.0124138,0.0365444,../data/refined/dbtext/wikipedia
+OptFSST,0.0146524,0.0204631,../data/refined/dbtext/yago
