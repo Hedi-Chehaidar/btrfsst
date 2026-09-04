@@ -18,4 +18,4 @@ For the paper benchmarks, run `./run.sh`. It builds the scalar and AVX-512 8-bit
 - compression-speed CSVs and plots comparing `FSST`, `FSST (SIMD)`, `OptFSST`, `FSST12`, and `OptFSST12`
 - decompression-speed CSVs and plots comparing `FSST`, `OptFSST`, `FSST12`, and `OptFSST12`
 
-More details in thesis presentation.
+More details in the paper and ADMS presentation.
